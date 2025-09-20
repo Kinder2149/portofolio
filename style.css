@@ -415,6 +415,10 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.carousel-container {
+    height: 65vh; /* Hauteur pour le carrousel principal sur mobile */
+}
+
 .project-card-v2 {
     flex-direction: column;
     padding: 20px;
@@ -425,10 +429,17 @@ body {
     flex: 1; /* Prend toute la largeur disponible */
 }
 
+.project-card-v2 {
+    min-height: 80vh;
+}
+
 .project-carousel-column {
-    flex: 0 0 auto; /* La largeur est déterminée par le contenu */
+    flex: 1;
     width: 100%;
     max-width: 280px; /* Largeur max du téléphone sur mobile */
+    display: flex; /* S'assurer que le contenu est bien géré */
+    flex-direction: column;
+    align-items: center;
 }
 
 .project-logo {
