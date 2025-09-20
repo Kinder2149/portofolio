@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Fichier CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="profile-container">
+        <img src="assets/kinder.png" alt="Photo de profil" class="profile-pic" id="profilePic">
+        <nav class="profile-menu" id="profileMenu">
+            <ul>
+                <li><a href="#" data-section="sites-section" class="menu-item active">Sites internet</a></li>
+                <li><a href="#" data-section="jeux-section" class="menu-item">Jeux Android</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section pour les sites internet (visible par défaut) -->
+        <section id="sites-section" class="content-section active">
+            <h1 class="main-title">Les sites internet</h1>
+            <div class="carousel-container">
+                <div class="carousel-slides"></div>
+                <button class="carousel-arrow prev">&#10094;</button>
+                <button class="carousel-arrow next">&#10095;</button>
+                <div class="carousel-indicators"></div>
+            </div>
+        </section>
+
+        <!-- Section pour les jeux Android (cachée par défaut) -->
+        <section id="jeux-section" class="content-section">
+            <h1 class="main-title">Jeux Android</h1>
+            <div class="game-container">
+                <div class="game-info">
+                    <img src="assets/logo_paperperclip.jpg" alt="Logo Paper Perclip" class="game-logo">
+                    <p class="game-description">Description du jeu Paper Perclip à compléter. Expliquez ici le concept, les mécaniques et les objectifs du jeu.</p>
+                </div>
+                <div class="game-carousel">
+                    <div class="game-carousel-slides"></div>
+                    <button class="game-carousel-arrow game-prev">&#10094;</button>
+                    <button class="game-carousel-arrow game-next">&#10095;</button>
+                    <div class="game-carousel-indicators"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fichier JavaScript (placé à la fin pour un chargement optimisé) -->
+    <script src="script.js"></script>
+</body>
+</html>
