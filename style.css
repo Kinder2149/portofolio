@@ -393,82 +393,172 @@ body {
     background-color: var(--indicator-active-color);
 }
 
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
+/* --- Responsive Design (Mobile-First) --- */
+
+/* Styles par défaut pour mobile */
+body {
+    padding: 15px;
+}
+
+.profile-container {
+    top: 15px;
+    left: 15px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+}
+
+.main-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-card-v2 {
+    flex-direction: column;
+    padding: 20px;
+    gap: 25px;
+}
+
+.project-info-column {
+    flex: 1; /* Prend toute la largeur disponible */
+}
+
+.project-carousel-column {
+    flex: 0 0 auto; /* La largeur est déterminée par le contenu */
+    width: 100%;
+    max-width: 280px; /* Largeur max du téléphone sur mobile */
+}
+
+.project-logo {
+    width: 100px;
+    height: 100px;
+}
+
+.project-title {
+    font-size: 1.5rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+}
+
+/* --- Menu Drawer pour Mobile --- */
+.profile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 10, 30, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.profile-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-menu ul {
+    text-align: center;
+}
+
+.profile-menu .menu-item {
+    color: #fff;
+    font-size: 2rem;
+    padding: 20px;
+    font-weight: 300;
+}
+
+.profile-menu .menu-item.active {
+    font-weight: 700;
+    background-color: transparent;
+}
+
+/* --- Styles pour tablettes et plus grands écrans --- */
+@media (min-width: 768px) {
     body {
-        padding: 10px;
-    }
-    
-    .profile-container {
-        top: 15px;
-        left: 15px;
+        padding: 30px;
     }
 
     .profile-pic {
-        width: 60px;
-        height: 60px;
-    }
-
-    .profile-menu {
-        top: 80px;
+        width: 80px;
+        height: 80px;
     }
 
     .main-title {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
+        font-size: 2rem;
     }
 
-    .carousel-container, .game-container {
-        width: 100%;
-        height: auto;
-        max-height: 85vh;
-        flex-direction: column;
-        padding: 20px;
+    .project-card-v2 {
+        flex-direction: row;
+        padding: 30px;
+        gap: 35px;
     }
 
-    .game-info {
-        margin-bottom: 20px;
+    .project-carousel-column {
+        flex: 0 0 300px;
     }
 
-    .game-carousel {
-        width: 100%;
-        height: 40vh; /* Hauteur fixe pour le carrousel sur mobile */
+    .project-logo {
+        width: 130px;
+        height: 130px;
     }
 
-    .game-logo {
-        width: 100px;
-        height: 100px;
-    }
-
-    .slide-content {
-        padding: 15px;
-    }
-
-    .slide-image {
-        max-width: 85%;
-        margin-bottom: 1.5rem;
-    }
-
-    .slide-title {
+    .project-title {
         font-size: 1.8rem;
     }
 
-    .slide-description {
+    /* Rétablir le menu normal */
+    .profile-menu {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: auto;
+        height: auto;
+        background-color: #fff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        display: block;
+        transform: translateY(-10px);
+        border-radius: 8px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-menu.active {
+        transform: translateY(0);
+    }
+
+    .profile-menu ul {
+        text-align: left;
+    }
+
+    .profile-menu .menu-item {
+        color: #333;
         font-size: 1rem;
+        padding: 12px 20px;
+        font-weight: 400;
     }
 
-    .carousel-arrow {
-        padding: 10px;
-        font-size: 1.2rem;
-        width: 40px;
-        height: 40px;
+    .profile-menu .menu-item.active {
+        background-color: #e0e6f0;
+        font-weight: 600;
     }
+}
 
-    .carousel-arrow.prev {
-        left: 10px;
-    }
-
-    .carousel-arrow.next {
-        right: 10px;
+/* Ajustements pour les grands écrans */
+@media (min-width: 1024px) {
+    .project-card-v2 {
+        max-width: 950px;
     }
 }

@@ -241,6 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Pour la section des jeux, on met un fond thématique
                 body.style.background = 'linear-gradient(135deg, #8a2be2 0%, #c71585 100%)';
             }
+
+            // Ferme le menu (surtout utile sur mobile)
+            profileMenu.classList.remove('active');
         });
     });
 });
