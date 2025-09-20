@@ -179,14 +179,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     initializeCarousel({
-        slidesContainer: '.game-carousel-slides',
-        indicatorsContainer: '.game-carousel-indicators',
-        prevButton: '.game-carousel-arrow.game-prev',
-        nextButton: '.game-carousel-arrow.game-next',
+        slidesContainer: '.project-carousel-slides',
+        indicatorsContainer: '.project-carousel-indicators',
+        prevButton: '.project-carousel-arrow.prev',
+        nextButton: '.project-carousel-arrow.next',
         data: gameImages,
-        slideClass: 'game-slide',
-        indicatorClass: 'game-indicator',
-        slideContent: (item) => `<img src="assets/${item.image}" alt="Image du jeu">`
+        slideClass: 'project-slide',
+        indicatorClass: 'project-indicator',
+        slideContent: (item) => `<img src="assets/${item.image}" alt="Image du jeu ClipFactory Empire">`
     });
 
     // Bonus : navigation avec les flèches du clavier
