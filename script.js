@@ -181,8 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 : `<div class="placeholder"><p>Visuel indisponible</p></div>`;
 
             return `
-                <div class="project-tags">${tagsHtml}</div>
                 <div class="slide-content two-columns">
+                    <div class="project-tags">${tagsHtml}</div>
                     <div class="left">
                         <h3 class="slide-title">${item.title}</h3>
                         <p class="project-desc">${item.description}</p>

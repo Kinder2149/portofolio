@@ -276,12 +276,14 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column; /* Pour le positionnement des tags */
     align-items: center;
     justify-content: center;
     text-align: center;
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
     z-index: 1;
+    padding: 20px; /* Ajout de padding pour l'effet carte */
 }
 
 .slide.active {
@@ -517,15 +519,43 @@ body {
 
 /* --- Styles pour tablettes et plus grands écrans --- */
 @media (max-width: 767px) {
+    .carousel-container {
+        background: none; /* On enlève le fond du conteneur */
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        height: auto; /* Hauteur auto pour s'adapter au contenu */
+        max-height: none;
+    }
+
     .slide-content.two-columns {
         flex-direction: column;
         text-align: center;
+        padding: 25px; /* Padding intérieur de la carte */
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 450px; /* Limite la largeur de la carte */
     }
 
-    .project-tags {
-        position: static;
-        margin-bottom: 1rem;
+    .slide-content .project-tags {
+        margin-bottom: 1.5rem;
         justify-content: center;
+        order: -1; /* Place les tags en premier */
+    }
+
+    .slide-content .left {
+        order: 0;
+    }
+
+    .slide-content .right {
+        margin-top: 20px;
+        order: 1;
     }
 }
 
