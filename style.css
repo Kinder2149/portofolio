@@ -524,19 +524,7 @@ body {
 
 
 
-@media (max-width: 767px) {
-    .slide {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 15px;
-    }
 
-    .slide .project-card-v2 {
-        width: 100%;
-        max-width: 450px;
-    }
-}
 
 @media (min-width: 768px) {
     body {
@@ -593,53 +581,73 @@ body {
     }
 }
 
-/* --- Ajustements spécifiques pour le carrousel "Sites Internet" sur mobile --- */
+/* --- Ajustements pour le carrousel "Sites Internet" sur mobile --- */
 @media (max-width: 768px) {
 
-    /* Rendre la hauteur du carrousel adaptable au contenu et unifier le cadre */
     #sites-section .carousel-container {
-        height: auto; /* Supprime la hauteur fixe */
-        min-height: 70vh; /* Garde une hauteur minimale décente */
-        padding-top: 0; /* On supprime le padding pour unifier */
-        padding-bottom: 0; /* On supprime le padding pour unifier */
-        display: flex;
-        align-items: center;
+        border: none;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+        height: auto;
+        overflow: visible;
+    }
+
+    #sites-section .slide {
+        padding-bottom: 40px; /* Espace pour les indicateurs */
+    }
+
+    #sites-section .slide-content.two-columns {
+        flex-direction: column;
+        gap: 1.2rem;
+        text-align: center;
+        padding: 0;
+    }
+
+    #sites-section .project-tags {
+        position: static;
         justify-content: center;
+        order: 1; /* Tags après l'image */
     }
 
-    /* Forcer une mise en page en colonne unique pour les slides */
-    .slide-content.two-columns {
-        flex-direction: column; /* Image au-dessus du texte */
-        text-align: center; /* Centrer tout le texte */
-        gap: 15px; /* Espacement réduit entre image et texte */
-        padding: 40px 15px 60px 15px; /* Espace pour le contenu, les flèches et les indicateurs */
+    #sites-section .slide-content .left, 
+    #sites-section .slide-content .right {
+        flex: 1 1 100%;
     }
 
-    /* Ajuster la taille de la police pour la lisibilité */
-    .slide-title {
-        font-size: 1.8rem; /* Titre légèrement plus petit */
+    #sites-section .slide-content .left {
+        order: 2; /* Texte en dernier */
     }
 
-    .project-desc {
-        font-size: 0.9rem; /* Taille de police demandée */
-        max-width: 90%; /* Limite la largeur du texte */
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.7; /* Améliore la lisibilité */
+    #sites-section .slide-content .right {
+        order: 0; /* Image en premier */
     }
 
-    /* S'assurer que l'image ne soit pas trop grande */
-    .slide-content .right {
-        max-width: 100%;
+    .image-container {
+        position: relative;
+        max-width: 400px;
+        margin: 0 auto;
     }
 
-    .project-screenshot {
-        max-height: 250px; /* Limite la hauteur de l'image */
+    .image-container .carousel-arrow {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    #sites-section .slide-title {
+        font-size: 1.8rem;
+    }
+
+    #sites-section .project-desc {
+        font-size: 0.9rem;
+        max-width: 95%;
+        margin: 0 auto 1rem auto;
+    }
+
+    #sites-section .project-screenshot {
+        max-height: 250px;
         width: auto;
-    }
-
-    /* Ajuster la position des flèches pour les centrer sur l'image */
-    #sites-section .carousel-arrow {
-        top: 165px; /* Positionne les flèches au milieu de l'image (hauteur max 250px + padding) */
+        margin: 0 auto;
     }
 }

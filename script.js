@@ -189,24 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer"><img src="assets/${item.image}" alt="${item.title}" loading="lazy" class="project-screenshot"></a>`
                 : `<div class="placeholder"><p>Visuel indisponible</p></div>`;
 
-            // Pour la vue mobile, on génère une carte qui imite la section Android
-            if (window.innerWidth <= 767) {
-                return `
-                    <div class="project-card-v2" style="width: 100%; max-width: 450px;">
-                        <div class="project-info-column">
-                            <div class="project-tags">${tagsHtml}</div>
-                            <h2 class="project-title">${item.title}</h2>
-                            <p class="project-description">${item.description}</p>
-                            <p class="invitation">${item.invitation}</p>
-                        </div>
-                        <div class="right" style="margin-top: 20px; width: 100%;">
-                            ${imageHtml}
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Structure pour desktop
+            // On génère TOUJOURS la même structure, le CSS s'occupe du responsive.
             return `
                 <div class="slide-content two-columns">
                     <div class="project-tags">${tagsHtml}</div>
@@ -216,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="invitation">${item.invitation}</p>
                     </div>
                     <div class="right">
-                        ${imageHtml}
+                        <div class="image-container">${imageHtml}</div>
                     </div>
                 </div>
             `;
