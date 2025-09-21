@@ -595,7 +595,7 @@ body {
     }
 
     #sites-section .slide {
-        padding-bottom: 40px; /* Espace pour les indicateurs */
+        padding-bottom: 0; /* On enlève le padding, les contrôles sont déplacés */
     }
 
     #sites-section .slide-content.two-columns {
@@ -630,9 +630,26 @@ body {
         margin: 0 auto;
     }
 
-    .image-container .carousel-arrow {
-        top: 50%;
-        transform: translateY(-50%);
+    /* --- Barre de navigation du carrousel en bas --- */
+    #sites-section .carousel-indicators {
+        position: relative; /* On les remet dans le flux */
+        bottom: auto;
+        left: auto;
+        transform: none;
+    }
+
+    #sites-section .carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        margin-top: 1.5rem; /* Espace au-dessus des contrôles */
+    }
+
+    #sites-section .carousel-arrow {
+        position: static; /* On sort les flèches du positionnement absolu */
+        transform: none;
     }
     
     #sites-section .slide-title {

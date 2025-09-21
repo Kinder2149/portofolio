@@ -113,9 +113,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 4. Fonction générique pour initialiser un carrousel ---
     function initializeCarousel(options) {
         const slidesContainer = document.querySelector(options.slidesContainer);
-        const indicatorsContainer = document.querySelector(options.indicatorsContainer);
-        const prevButton = document.querySelector(options.prevButton);
-        const nextButton = document.querySelector(options.nextButton);
+        let indicatorsContainer = document.querySelector(options.indicatorsContainer);
+        let prevButton = document.querySelector(options.prevButton);
+        let nextButton = document.querySelector(options.nextButton);
+
+        // Après la création dynamique, on déplace les contrôles
+        setTimeout(() => {
+            const controls = slidesContainer.parentElement.querySelector('.carousel-controls');
+            if (controls) {
+                prevButton = document.querySelector(options.prevButton);
+                nextButton = document.querySelector(options.nextButton);
+                indicatorsContainer = document.querySelector(options.indicatorsContainer);
+
+                controls.appendChild(prevButton);
+                controls.appendChild(indicatorsContainer);
+                controls.appendChild(nextButton);
+            }
+        }, 0);
         const data = options.data;
         let currentSlide = 0;
 
@@ -125,6 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
             slide.classList.add(options.slideClass);
             slide.innerHTML = options.slideContent(item);
             slidesContainer.appendChild(slide);
+
+            // Créer le conteneur pour les contrôles en dehors des slides
+            if (index === data.length - 1) { // On l'ajoute une seule fois à la fin
+                const controlsContainer = document.createElement('div');
+                controlsContainer.className = 'carousel-controls';
+                slidesContainer.parentElement.appendChild(controlsContainer);
+            }
 
             if (indicatorsContainer) {
                 const indicator = document.createElement('div');
