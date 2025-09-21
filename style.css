@@ -581,3 +581,49 @@ body {
         max-width: 950px;
     }
 }
+
+/* --- Ajustements spécifiques pour le carrousel "Sites Internet" sur mobile --- */
+@media (max-width: 768px) {
+
+    /* Rendre la hauteur du carrousel adaptable au contenu */
+    #sites-section .carousel-container {
+        height: auto; /* Supprime la hauteur fixe */
+        min-height: 65vh; /* Garde une hauteur minimale décente */
+        padding-bottom: 50px; /* Espace pour les indicateurs */
+    }
+
+    /* Forcer une mise en page en colonne unique pour les slides */
+    .slide-content.two-columns {
+        flex-direction: column; /* Image au-dessus du texte */
+        text-align: center; /* Centrer tout le texte */
+        gap: 15px; /* Espacement réduit entre image et texte */
+    }
+
+    /* Ajuster la taille de la police pour la lisibilité */
+    .slide-title {
+        font-size: 1.8rem; /* Titre légèrement plus petit */
+    }
+
+    .project-desc {
+        font-size: 0.9rem; /* Taille de police demandée */
+        max-width: 90%; /* Limite la largeur du texte */
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7; /* Améliore la lisibilité */
+    }
+
+    /* S'assurer que l'image ne soit pas trop grande */
+    .slide-content .right {
+        max-width: 100%;
+    }
+
+    .project-screenshot {
+        max-height: 250px; /* Limite la hauteur de l'image */
+        width: auto;
+    }
+
+    /* Ajuster la position des flèches pour ne pas gêner */
+    .carousel-arrow {
+        top: 40%; /* Remonter légèrement les flèches */
+    }
+}
