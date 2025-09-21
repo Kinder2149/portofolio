@@ -600,7 +600,7 @@ body {
 
     #sites-section .slide-content.two-columns {
         flex-direction: column;
-        gap: 1.2rem;
+        gap: 0.8rem; /* On réduit l'espace principal entre les blocs */
         text-align: center;
         padding: 0;
     }
@@ -637,6 +637,7 @@ body {
     
     #sites-section .slide-title {
         font-size: 1.8rem;
+        margin-bottom: 0.75rem; /* On ajoute un espace sous le titre */
     }
 
     #sites-section .project-desc {
