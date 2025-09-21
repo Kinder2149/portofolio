@@ -596,12 +596,15 @@ body {
 /* --- Ajustements spécifiques pour le carrousel "Sites Internet" sur mobile --- */
 @media (max-width: 768px) {
 
-    /* Rendre la hauteur du carrousel adaptable au contenu */
+    /* Rendre la hauteur du carrousel adaptable au contenu et unifier le cadre */
     #sites-section .carousel-container {
         height: auto; /* Supprime la hauteur fixe */
         min-height: 70vh; /* Garde une hauteur minimale décente */
-        padding-top: 20px; /* Espace en haut */
-        padding-bottom: 50px; /* Espace pour les indicateurs */
+        padding-top: 0; /* On supprime le padding pour unifier */
+        padding-bottom: 0; /* On supprime le padding pour unifier */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Forcer une mise en page en colonne unique pour les slides */
@@ -609,7 +612,7 @@ body {
         flex-direction: column; /* Image au-dessus du texte */
         text-align: center; /* Centrer tout le texte */
         gap: 15px; /* Espacement réduit entre image et texte */
-        padding: 0 15px; /* Empêche le contenu de toucher les bords */
+        padding: 40px 15px 60px 15px; /* Espace pour le contenu, les flèches et les indicateurs */
     }
 
     /* Ajuster la taille de la police pour la lisibilité */
@@ -637,6 +640,6 @@ body {
 
     /* Ajuster la position des flèches pour les centrer sur l'image */
     #sites-section .carousel-arrow {
-        top: 145px; /* Positionne les flèches au milieu de l'image (hauteur max 250px + padding) */
+        top: 165px; /* Positionne les flèches au milieu de l'image (hauteur max 250px + padding) */
     }
 }
