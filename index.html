@@ -14,15 +14,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <img src="assets/kinder.png" alt="Photo de profil" class="profile-pic-static">
 
-    <header class="profile-container">
-        <img src="assets/kinder.png" alt="Photo de profil" class="profile-pic" id="profilePic">
-        <nav class="profile-menu" id="profileMenu">
-            <ul>
-                <li><a href="#" data-section="sites-section" class="menu-item active">Sites internet</a></li>
-                <li><a href="#" data-section="jeux-section" class="menu-item">Jeux Android</a></li>
-            </ul>
-        </nav>
+    <header class="section-switcher">
+        <button class="menu-item active" data-section="sites-section">
+            <span class="icon">🌐</span>
+            <span class="text">Sites internet</span>
+        </button>
+        <button class="menu-item" data-section="jeux-section">
+            <span class="icon">📱</span>
+            <span class="text">Apps Android</span>
+        </button>
     </header>
 
     <main>
@@ -43,12 +45,15 @@
             <div class="project-card-v2">
                 <!-- Colonne de Gauche : Infos -->
                 <div class="project-info-column">
-                    <img src="assets/logo_paperperclip.jpg" alt="Logo ClipFactory Empire" class="project-logo">
+                    <a href="https://play.google.com/store/apps/details?id=com.kinder2149.paperclip2" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/logo_paperperclip.jpg" alt="Logo ClipFactory Empire" class="project-logo" loading="lazy">
+                    </a>
                     <div class="project-text">
                         <h2 class="project-title">ClipFactory Empire</h2>
                         <p class="project-description">
                             Devenez le magnat du trombone ! Commencez avec une simple machine et développez votre empire en produisant, vendant et améliorant vos trombones. Gérez vos ressources et dominez le marché.
                         </p>
+                        <a class="playstore-badge" href="https://play.google.com/store/apps/details?id=com.kinder2149.paperclip2" target="_blank" rel="noopener noreferrer">Voir sur le Play Store</a>
                     </div>
                 </div>
 

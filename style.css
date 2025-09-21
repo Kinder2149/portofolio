@@ -25,70 +25,69 @@ body {
     transition: background 0.8s ease-in-out;
 }
 
-/* --- Menu de profil --- */
-.profile-container {
+/* --- Photo de Profil Statique --- */
+.profile-pic-static {
     position: fixed;
     top: 30px;
     left: 30px;
-    z-index: 100;
-}
-
-.profile-pic {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     border: 3px solid #fff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    z-index: 101;
     transition: transform 0.3s ease;
 }
 
-.profile-pic:hover {
+.profile-pic-static:hover {
     transform: scale(1.1);
 }
 
-.profile-menu {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+/* --- Nouvelle Navigation par Boutons --- */
+.section-switcher {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    position: fixed; /* Positionné en bas */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
 }
 
-.profile-menu.active {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-}
-
-.profile-menu ul {
-    list-style: none;
-    padding: 5px 0;
-}
-
-.profile-menu .menu-item {
-    display: block;
-    padding: 12px 20px;
-    color: #333;
-    text-decoration: none;
-    font-size: 1rem;
-    white-space: nowrap;
-    transition: background-color 0.2s ease;
-}
-
-.profile-menu .menu-item:hover {
-    background-color: #f0f2f5;
-}
-
-.profile-menu .menu-item.active {
-    background-color: #e0e6f0;
+.section-switcher .menu-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 15px;
+    border-radius: 999px; /* Style "pill" */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.9rem;
     font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.section-switcher .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.section-switcher .menu-item.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-switcher .icon {
+    font-size: 1.2rem;
 }
 
 /* --- Conteneur Principal du Carrousel --- */
@@ -298,30 +297,86 @@ body {
     align-items: center;
 }
 
-/* --- Contenu de la Diapositive --- */
-.slide-image {
-    max-width: 80%;
+/* --- Nouveaux styles pour les slides --- */
+.project-tags {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tags .tag {
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.slide-content.two-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+}
+
+.slide-content .left {
+    flex: 1;
+}
+
+.slide-content .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-screenshot {
+    max-width: 100%;
     height: auto;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    margin-bottom: 2rem;
+}
+
+.placeholder {
+    width: 100%;
+    height: 300px; /* Ajustez la hauteur si nécessaire */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.2);
+    color: rgba(255,255,255,0.7);
+    font-size: 1.2rem;
 }
 
 .slide-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-.slide-description {
-    font-size: 1.1rem;
+.project-desc {
+    font-size: 1rem;
     font-weight: 300;
-    max-width: 600px;
-    margin-bottom: 1.5rem;
     line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
 }
 
-.slide-link {
+.invitation {
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.playstore-badge {
     display: inline-block;
     text-decoration: none;
     color: var(--text-color);
@@ -330,9 +385,10 @@ body {
     border-radius: 50px;
     font-weight: 400;
     transition: background-color 0.3s ease;
+    margin-top: 15px;
 }
 
-.slide-link:hover {
+.playstore-badge:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -398,11 +454,14 @@ body {
 /* Styles par défaut pour mobile */
 body {
     padding: 15px;
+    padding-bottom: 80px; /* Espace pour les boutons en bas */
 }
 
-.profile-container {
+.profile-pic-static {
     top: 15px;
     left: 15px;
+    width: 60px;
+    height: 60px;
 }
 
 .profile-pic {
@@ -455,56 +514,35 @@ body {
     font-size: 0.95rem;
 }
 
-/* --- Menu Drawer pour Mobile --- */
-.profile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(20, 10, 30, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-100%);
-    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-}
-
-.profile-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.profile-menu ul {
-    text-align: center;
-}
-
-.profile-menu .menu-item {
-    color: #fff;
-    font-size: 2rem;
-    padding: 20px;
-    font-weight: 300;
-}
-
-.profile-menu .menu-item.active {
-    font-weight: 700;
-    background-color: transparent;
-}
 
 /* --- Styles pour tablettes et plus grands écrans --- */
+@media (max-width: 767px) {
+    .slide-content.two-columns {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-tags {
+        position: static;
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+}
+
 @media (min-width: 768px) {
     body {
         padding: 30px;
+        padding-bottom: 30px; /* Rétablir le padding normal */
+        padding-left: 120px; /* Espace pour la photo */
     }
 
-    .profile-pic {
-        width: 80px;
-        height: 80px;
+    .section-switcher {
+        flex-direction: row; /* Les boutons redeviennent horizontaux */
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
     }
 
     .main-title {
@@ -528,42 +566,6 @@ body {
 
     .project-title {
         font-size: 1.8rem;
-    }
-
-    /* Rétablir le menu normal */
-    .profile-menu {
-        position: absolute;
-        top: 100px;
-        left: 0;
-        width: auto;
-        height: auto;
-        background-color: #fff;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        display: block;
-        transform: translateY(-10px);
-        border-radius: 8px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .profile-menu.active {
-        transform: translateY(0);
-    }
-
-    .profile-menu ul {
-        text-align: left;
-    }
-
-    .profile-menu .menu-item {
-        color: #333;
-        font-size: 1rem;
-        padding: 12px 20px;
-        font-weight: 400;
-    }
-
-    .profile-menu .menu-item.active {
-        background-color: #e0e6f0;
-        font-weight: 600;
     }
 }
 

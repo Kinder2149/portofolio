@@ -11,73 +11,84 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pour ajouter un projet, il suffit de copier un bloc { ... } et de le coller ici.
     const projects = [
         {
-            title: "Atelier Connecté",
+            title: "L’atelier connecté",
+            tags: ["Site vitrine", "Maquette / demo", "Design & Intégration", "Wix (prototype)"],
+            description: "Maquette d’un site de service local destinée aux associations et petites entreprises — organisation des services, prise de contact et mise en avant d’offres de proximité. Le design met l’accent sur la clarté des informations et la facilité d’accès pour un public local.",
+            invitation: "Clique sur l’image pour voir la démo et n’hésite pas à naviguer vers les autres onglets pour découvrir plus de projets.",
             image: "Atelier-connecté.PNG",
-            link: "https://keamder.wixsite.com/latelier-connecte",
-            description: "Description du projet Atelier Connecté à compléter.",
+            url: "https://keamder.wixsite.com/latelier-connecte",
             gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
         },
         {
             title: "La légende du Graoully",
+            tags: ["Enquête urbaine / Récit", "Projet pro (ancien poste)", "Intégration & contenu", "Wix / site storytelling"],
+            description: "Site conçu autour d’une enquête à propos d’un lieu historique de la ville — ambiances immersives, éléments narratifs et interactions pour guider l’utilisateur dans l’enquête. Idéal pour événements locaux et médiation culturelle.",
+            invitation: "Clique pour explorer l’enquête en ligne, et parcours les autres onglets pour voir mes autres réalisations.",
             image: "la_legende_du_graoully.PNG",
-            link: "https://keamder.wixsite.com/legende-du-graoully",
-            description: "Description du projet La légende du Graoully à compléter.",
+            url: "https://keamder.wixsite.com/legende-du-graoully",
             gradient: "linear-gradient(135deg, #232526 0%, #414345 100%)"
         },
         {
             title: "Make it better",
+            tags: ["E-commerce (maquette)", "Concept", "UX / UI", "Boutique (maquette)"],
+            description: "Maquette d’une boutique en ligne dédiée aux t-shirts personnalisables : page produit, configurateur simple et parcours d’achat simulé. L’objectif : démontrer un flux commercial et une interface claire pour un public jeune.",
+            invitation: "Teste la démo depuis l’image et visite les autres onglets pour voir d’autres types de projets.",
             image: "make_it_better.PNG",
-            link: "https://keamder.wixsite.com/make-it-better",
-            description: "Description du projet Make it better à compléter.",
+            url: "https://keamder.wixsite.com/make-it-better",
             gradient: "linear-gradient(135deg, #2E8B57 0%, #4682B4 100%)"
         },
         {
-            title: "Enquête Multivers",
+            title: "Enquête dans le Multivers",
+            tags: ["Projet perso / Enquête interactive", "Prototype", "Création & conception", "Accès restreint (code 'Ultim@te')"],
+            description: "Site personnel conçu comme une enquête multi-scénarios. Accès protégé par un code (Ultim@te) pour débloquer les épisodes. Le site mélange textes, indices visuels et liens pour une expérience immersive.",
+            invitation: "Clique pour ouvrir la page (code requis) et explore aussi les autres onglets pour voir d’autres expériences.",
             image: "enquete_multivers.PNG",
-            link: "https://keamder.wixsite.com/clef7258",
-            description: "Description du projet Enquête Multivers à compléter.",
+            url: "https://keamder.wixsite.com/clef7258",
             gradient: "linear-gradient(135deg, #0f2027 0%, #203a43 100%)"
         },
         {
             title: "Escape Mythology",
+            tags: ["Enquête / Jeu narratif", "Projet perso", "Scénarisation & design", "Web"],
+            description: "Projet d’enquête basé sur la mythologie, avec énigmes, indices et mise en page immersive. Destiné à tester des mécaniques narratives et UX ludiques.",
+            invitation: "Clique sur l’image pour visiter la page et navigue entre les onglets pour découvrir les autres travaux.",
             image: "mythology_escape.PNG",
-            link: "https://keamder.wixsite.com/escapemythology",
-            description: "Description du projet Escape Mythology à compléter.",
+            url: "https://keamder.wixsite.com/escapemythology",
             gradient: "linear-gradient(135deg, #D1B48C 0%, #534833 100%)"
         },
         {
             title: "Formation BAFA",
+            tags: ["Support pédagogique", "Réalisé (personnel)", "Création de contenu / Blog", "Web (onglets blog)"],
+            description: "Support en ligne conçu pour accompagner des formations BAFA : ressources pédagogiques, fiches activités et onglet blog pour retours d’expérience. Pensé pour la lisibilité en formation.",
+            invitation: "Consulte la fiche via l’image et n’hésite pas à parcourir les onglets pour d’autres projets.",
             image: "formation_bafa.PNG",
-            link: "https://keamder.wixsite.com/my-site-2",
-            description: "Description du projet Formation BAFA à compléter.",
+            url: "https://keamder.wixsite.com/my-site-2",
             gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
         },
         {
-            title: "CSC Gilbert Jansem",
-            image: "csc.PNG",
-            link: "https://keamder.wixsite.com/csc-gilbertjansem",
-            description: "Description du projet CSC à compléter.",
-            gradient: "linear-gradient(135deg, #f7971e 0%, #ffd200 100%)"
-        },
-        {
-            title: "Jeux Olympiques",
+            title: "Jeux Olympique",
+            tags: ["Événement / Inscription", "Utilisé en événement pro", "Développement & gestion", "Web"],
+            description: "Site d’événement pensé pour gérer inscriptions et compétitions sportives : formulaires d’inscription, calendrier et suivi des résultats. Conçu pour un usage ponctuel et intensif.",
+            invitation: "Ouvre l’exemple via l’image et parcoure les onglets pour découvrir d’autres réalisations.",
             image: "jeux_olympique.PNG",
-            link: "https://keamder.wixsite.com/my-site",
-            description: "Description du projet Jeux Olympiques à compléter.",
+            url: "https://keamder.wixsite.com/my-site",
             gradient: "linear-gradient(135deg, #4285F4 0%, #DB4437 50%, #0F9D58 100%)"
         },
         {
-            title: "Oppi",
+            title: "OPPI",
+            tags: ["E-commerce (Shopify)", "Mission professionnelle", "Intégration sous charte graphique", "Shopify"],
+            description: "Mission professionnelle sur une boutique Shopify avec charte graphique imposée : adaptation des templates, intégration des visuels et optimisations UX pour la conversion. Travail réalisé en respect de la marque.",
+            invitation: "Clique pour voir la boutique en ligne et explore les autres onglets pour voir d’autres types de missions.",
             image: "oppi.PNG",
-            link: "https://oppitoys.com",
-            description: "Description du projet Oppi à compléter.",
+            url: "https://oppitoys.com",
             gradient: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)"
         },
         {
             title: "Subteal",
+            tags: ["E-commerce (Shopify)", "Mission professionnelle", "Intégration & optimisation", "Shopify"],
+            description: "Intégration d’un site Shopify dans le respect d’une identité visuelle existante. Focus sur la présentation produit et la fluidité du tunnel d’achat.",
+            invitation: "Visite la boutique via l’image et passe aux autres onglets pour parcourir mon portfolio complet.",
             image: "subteal.PNG",
-            link: "https://subteal.fr",
-            description: "Description du projet Subteal à compléter.",
+            url: "https://subteal.fr/",
             gradient: "linear-gradient(135deg, #008080 0%, #004d4d 100%)"
         }
     ];
@@ -85,9 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. Sélection des éléments du DOM ---
     // --- Sélection des éléments du DOM ---
     const body = document.body;
-    const profilePic = document.getElementById('profilePic');
-    const profileMenu = document.getElementById('profileMenu');
-    const menuItems = document.querySelectorAll('.menu-item');
+    const menuItems = document.querySelectorAll('.section-switcher .menu-item');
     const contentSections = document.querySelectorAll('.content-section');
     let mainCarouselCurrentSlide = 0;
 
@@ -165,13 +174,26 @@ document.addEventListener('DOMContentLoaded', () => {
         data: projects,
         slideClass: 'slide',
         indicatorClass: 'indicator',
-        slideContent: (item) => `
-            <div class="slide-content">
-                <img src="assets/${item.image}" alt="${item.title}" class="slide-image">
-                <h2 class="slide-title">${item.title}</h2>
-                <p class="slide-description">${item.description}</p>
-                <a href="${item.link}" target="_blank" class="slide-link">Voir le projet</a>
-            </div>`,
+        slideContent: (item) => {
+            const tagsHtml = item.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            const imageHtml = item.image
+                ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer"><img src="assets/${item.image}" alt="${item.title}" loading="lazy" class="project-screenshot"></a>`
+                : `<div class="placeholder"><p>Visuel indisponible</p></div>`;
+
+            return `
+                <div class="project-tags">${tagsHtml}</div>
+                <div class="slide-content two-columns">
+                    <div class="left">
+                        <h3 class="slide-title">${item.title}</h3>
+                        <p class="project-desc">${item.description}</p>
+                        <p class="invitation">${item.invitation}</p>
+                    </div>
+                    <div class="right">
+                        ${imageHtml}
+                    </div>
+                </div>
+            `;
+        },
         onSlideChange: (index) => {
             body.style.background = projects[index].gradient;
             mainCarouselCurrentSlide = index;
@@ -186,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data: gameImages,
         slideClass: 'project-slide',
         indicatorClass: 'project-indicator',
-        slideContent: (item) => `<img src="assets/${item.image}" alt="Image du jeu ClipFactory Empire">`
+        slideContent: (item) => `<a href="https://play.google.com/store/apps/details?id=com.kinder2149.paperclip2" target="_blank" rel="noopener noreferrer"><img src="assets/${item.image}" alt="Image du jeu ClipFactory Empire" loading="lazy"></a>`
     });
 
     // Bonus : navigation avec les flèches du clavier
@@ -201,20 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 6. Gestion du menu de profil ---
-    profilePic.addEventListener('click', (e) => {
-        e.stopPropagation(); // Empêche la fermeture immédiate
-        profileMenu.classList.toggle('active');
-    });
-
-    // Ferme le menu si on clique n'importe où sur la page
-    document.addEventListener('click', () => {
-        if (profileMenu.classList.contains('active')) {
-            profileMenu.classList.remove('active');
-        }
-    });
-
-    // --- 7. Gestion des onglets du menu ---
+    // --- 6. Gestion des onglets du menu ---
     menuItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
@@ -242,8 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 body.style.background = 'linear-gradient(135deg, #8a2be2 0%, #c71585 100%)';
             }
 
-            // Ferme le menu (surtout utile sur mobile)
-            profileMenu.classList.remove('active');
         });
     });
 });
