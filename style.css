@@ -49,8 +49,8 @@ body {
     gap: 10px;
     width: 100%;
     max-width: 500px;
-    position: fixed; /* Positionné en bas */
-    bottom: 20px;
+    position: fixed; /* Positionné en haut sur mobile */
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -456,7 +456,8 @@ body {
 /* Styles par défaut pour mobile */
 body {
     padding: 15px;
-    padding-bottom: 80px; /* Espace pour les boutons en bas */
+    padding-top: 90px; /* Espace pour les boutons en haut */
+    padding-bottom: 30px;
 }
 
 .profile-pic-static {
@@ -545,7 +546,8 @@ body {
     .section-switcher {
         flex-direction: row; /* Les boutons redeviennent horizontaux */
         position: fixed;
-        bottom: 20px;
+        top: auto; /* On annule la position haute */
+        bottom: 20px; /* On remet en bas */
         left: 50%;
         transform: translateX(-50%);
         width: auto;
@@ -588,7 +590,8 @@ body {
     /* Rendre la hauteur du carrousel adaptable au contenu */
     #sites-section .carousel-container {
         height: auto; /* Supprime la hauteur fixe */
-        min-height: 65vh; /* Garde une hauteur minimale décente */
+        min-height: 70vh; /* Garde une hauteur minimale décente */
+        padding-top: 20px; /* Espace en haut */
         padding-bottom: 50px; /* Espace pour les indicateurs */
     }
 
@@ -596,7 +599,8 @@ body {
     .slide-content.two-columns {
         flex-direction: column; /* Image au-dessus du texte */
         text-align: center; /* Centrer tout le texte */
-        gap: 15px; /* Espacement réduit entre image et texte */
+        gap: 25px; /* Espacement augmenté entre image et texte */
+        padding: 0 15px; /* Empêche le contenu de toucher les bords */
     }
 
     /* Ajuster la taille de la police pour la lisibilité */
