@@ -457,12 +457,14 @@ body {
 body {
     padding: 15px;
     padding-top: 90px; /* Espace pour les boutons en haut */
-    padding-bottom: 30px;
+    padding-bottom: 100px; /* Espace pour la photo de profil en bas */
 }
 
 .profile-pic-static {
-    top: 15px;
-    left: 15px;
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 60px;
     height: 60px;
 }
@@ -543,6 +545,13 @@ body {
         padding-left: 120px; /* Espace pour la photo */
     }
 
+    .profile-pic-static {
+        top: 30px; /* On la remet en haut */
+        left: 30px; /* On la remet à gauche */
+        bottom: auto;
+        transform: none;
+    }
+
     .section-switcher {
         flex-direction: row; /* Les boutons redeviennent horizontaux */
         position: fixed;
@@ -599,7 +608,7 @@ body {
     .slide-content.two-columns {
         flex-direction: column; /* Image au-dessus du texte */
         text-align: center; /* Centrer tout le texte */
-        gap: 25px; /* Espacement augmenté entre image et texte */
+        gap: 15px; /* Espacement réduit entre image et texte */
         padding: 0 15px; /* Empêche le contenu de toucher les bords */
     }
 
@@ -626,8 +635,8 @@ body {
         width: auto;
     }
 
-    /* Ajuster la position des flèches pour ne pas gêner */
-    .carousel-arrow {
-        top: 40%; /* Remonter légèrement les flèches */
+    /* Ajuster la position des flèches pour les centrer sur l'image */
+    #sites-section .carousel-arrow {
+        top: 145px; /* Positionne les flèches au milieu de l'image (hauteur max 250px + padding) */
     }
 }
