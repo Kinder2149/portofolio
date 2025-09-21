@@ -592,17 +592,27 @@ body {
         box-shadow: none;
         height: auto;
         overflow: visible;
+        display: flex; /* Ajout pour le centrage */
+        flex-direction: column; /* Ajout pour le centrage */
     }
 
-    #sites-section .slide {
-        padding-bottom: 0; /* On enlève le padding, les contrôles sont déplacés */
-    }
 
-    #sites-section .slide-content.two-columns {
+
+        #sites-section .slide {
+        display: none; /* On cache les slides par défaut */
         flex-direction: column;
-        gap: 0.8rem; /* On réduit l'espace principal entre les blocs */
+        gap: 1.2rem;
         text-align: center;
         padding: 0;
+        width: 100%;
+    }
+
+    #sites-section .slide.active {
+        display: flex; /* On affiche seulement la slide active */
+    }
+
+        #sites-section .slide-content.two-columns {
+        display: contents; /* Permet aux enfants de se comporter comme des flex-items directs de .slide */
     }
 
     #sites-section .project-tags {
