@@ -210,18 +210,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer"><img src="assets/${item.image}" alt="${item.title}" loading="lazy" class="project-screenshot"></a>`
                 : `<div class="placeholder"><p>Visuel indisponible</p></div>`;
 
-            // On génère TOUJOURS la même structure, le CSS s'occupe du responsive.
+            // Structure HTML unifiée et simplifiée
             return `
-                <div class="slide-content two-columns">
+                <div class="slide-content">
+                    <div class="image-container">${imageHtml}</div>
+                    <h3 class="slide-title">${item.title}</h3>
                     <div class="project-tags">${tagsHtml}</div>
-                    <div class="left">
-                        <h3 class="slide-title">${item.title}</h3>
-                        <p class="project-desc">${item.description}</p>
-                        <p class="invitation">${item.invitation}</p>
-                    </div>
-                    <div class="right">
-                        <div class="image-container">${imageHtml}</div>
-                    </div>
+                    <p class="project-desc">${item.description}</p>
+                    <p class="invitation">${item.invitation}</p>
                 </div>
             `;
         },

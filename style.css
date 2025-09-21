@@ -581,9 +581,10 @@ body {
     }
 }
 
-/* --- Ajustements pour le carrousel "Sites Internet" sur mobile --- */
+/* --- Mise en page mobile pour le carrousel des sites --- */
 @media (max-width: 768px) {
 
+    /* 1. On simplifie le conteneur principal */
     #sites-section .carousel-container {
         border: none;
         background: transparent;
@@ -592,60 +593,59 @@ body {
         box-shadow: none;
         height: auto;
         overflow: visible;
-        display: flex; /* Ajout pour le centrage */
-        flex-direction: column; /* Ajout pour le centrage */
     }
 
+    /* 2. On cache les slides inactives */
+    #sites-section .slide {
+        display: none;
+    }
 
+    /* 3. La slide active est affichée */
+    #sites-section .slide.active {
+        display: block;
+    }
 
-        #sites-section .slide {
-        display: none; /* On cache les slides par défaut */
-        flex-direction: column;
-        gap: 1.2rem;
+    /* 4. Mise en page en grille pour le contenu de la slide */
+    #sites-section .slide-content {
+        display: grid;
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 1rem; /* Espace entre chaque élément */
         text-align: center;
         padding: 0;
-        width: 100%;
     }
 
-    #sites-section .slide.active {
-        display: flex; /* On affiche seulement la slide active */
-    }
-
-        #sites-section .slide-content.two-columns {
-        display: contents; /* Permet aux enfants de se comporter comme des flex-items directs de .slide */
-    }
-
-    #sites-section .project-tags {
-        position: static;
-        justify-content: center;
-        order: 1; /* Tags après l'image */
-    }
-
-    #sites-section .slide-content .left, 
-    #sites-section .slide-content .right {
-        flex: 1 1 100%;
-    }
-
-    #sites-section .slide-content .left {
-        order: 2; /* Texte en dernier */
-    }
-
-    #sites-section .slide-content .right {
-        order: 0; /* Image en premier */
-    }
-
+    /* 5. Styles des éléments dans la grille */
     .image-container {
-        position: relative;
+        position: relative; /* Pour positionner les flèches */
         max-width: 400px;
         margin: 0 auto;
     }
 
-    /* --- Barre de navigation du carrousel en bas --- */
-    #sites-section .carousel-indicators {
-        position: relative; /* On les remet dans le flux */
-        bottom: auto;
-        left: auto;
-        transform: none;
+    .project-tags {
+        justify-content: center; /* Centre les tags */
+    }
+
+    #sites-section .slide-title {
+        font-size: 1.8rem;
+    }
+
+    #sites-section .project-desc {
+        font-size: 0.9rem;
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    #sites-section .project-screenshot {
+        max-height: 250px;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    /* 6. Positionnement des contrôles */
+    .image-container .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     #sites-section .carousel-controls {
@@ -654,28 +654,16 @@ body {
         justify-content: center;
         gap: 20px;
         width: 100%;
-        margin-top: 1.5rem; /* Espace au-dessus des contrôles */
+        margin-top: 1.5rem;
+    }
+
+    #sites-section .carousel-indicators {
+        position: static;
+        transform: none;
     }
 
     #sites-section .carousel-arrow {
-        position: static; /* On sort les flèches du positionnement absolu */
+        position: static;
         transform: none;
-    }
-    
-    #sites-section .slide-title {
-        font-size: 1.8rem;
-        margin-bottom: 0.75rem; /* On ajoute un espace sous le titre */
-    }
-
-    #sites-section .project-desc {
-        font-size: 0.9rem;
-        max-width: 95%;
-        margin: 0 auto 1rem auto;
-    }
-
-    #sites-section .project-screenshot {
-        max-height: 250px;
-        width: auto;
-        margin: 0 auto;
     }
 }
