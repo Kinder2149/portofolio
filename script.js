@@ -117,19 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let prevButton = document.querySelector(options.prevButton);
         let nextButton = document.querySelector(options.nextButton);
 
-        // Après la création dynamique, on déplace les contrôles
-        setTimeout(() => {
-            const controls = slidesContainer.parentElement.querySelector('.carousel-controls');
-            if (controls) {
-                prevButton = document.querySelector(options.prevButton);
-                nextButton = document.querySelector(options.nextButton);
-                indicatorsContainer = document.querySelector(options.indicatorsContainer);
-
-                controls.appendChild(prevButton);
-                controls.appendChild(indicatorsContainer);
-                controls.appendChild(nextButton);
-            }
-        }, 0);
         const data = options.data;
         let currentSlide = 0;
 
@@ -140,12 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slide.innerHTML = options.slideContent(item);
             slidesContainer.appendChild(slide);
 
-            // Créer le conteneur pour les contrôles en dehors des slides
-            if (index === data.length - 1) { // On l'ajoute une seule fois à la fin
-                const controlsContainer = document.createElement('div');
-                controlsContainer.className = 'carousel-controls';
-                slidesContainer.parentElement.appendChild(controlsContainer);
-            }
+
 
             if (indicatorsContainer) {
                 const indicator = document.createElement('div');
@@ -157,6 +139,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const allSlides = slidesContainer.querySelectorAll(`.${options.slideClass}`);
         const allIndicators = indicatorsContainer ? indicatorsContainer.querySelectorAll(`.${options.indicatorClass}`) : [];
+
+        // On groupe les contrôles dans une div pour les styliser ensemble
+        if (options.controlsContainer) {
+            const controlsDiv = document.createElement('div');
+            controlsDiv.className = options.controlsContainer;
+            if(prevButton) controlsDiv.appendChild(prevButton);
+            if(indicatorsContainer) controlsDiv.appendChild(indicatorsContainer);
+            if(nextButton) controlsDiv.appendChild(nextButton);
+            slidesContainer.parentElement.appendChild(controlsDiv);
+        }
 
         function showSlide(index) {
             if (index >= data.length) index = 0;
@@ -197,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 5. Initialisation des deux carrousels ---
     const showMainSlide = initializeCarousel({
+        controlsContainer: 'carousel-controls', // Classe du conteneur pour les contrôles
         slidesContainer: '.carousel-slides',
         indicatorsContainer: '.carousel-indicators',
         prevButton: '.carousel-arrow.prev',
@@ -210,14 +203,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer"><img src="assets/${item.image}" alt="${item.title}" loading="lazy" class="project-screenshot"></a>`
                 : `<div class="placeholder"><p>Visuel indisponible</p></div>`;
 
-            // Structure HTML unifiée et simplifiée
+            // Structure HTML avec un conteneur pour le texte
             return `
                 <div class="slide-content">
-                    <div class="image-container">${imageHtml}</div>
                     <h3 class="slide-title">${item.title}</h3>
                     <div class="project-tags">${tagsHtml}</div>
-                    <p class="project-desc">${item.description}</p>
-                    <p class="invitation">${item.invitation}</p>
+                    <div class="text-content">
+                        <p class="project-desc">${item.description}</p>
+                        <p class="invitation">${item.invitation}</p>
+                    </div>
+                    <div class="image-container">${imageHtml}</div>
                 </div>
             `;
         },
