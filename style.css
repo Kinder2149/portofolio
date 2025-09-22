@@ -1,3 +1,95 @@
+/* --- Fiche de Profil --- */
+.profile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.profile-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile-card {
+    position: fixed;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+}
+
+.profile-card.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.profile-card-content {
+    text-align: center;
+}
+
+.profile-card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.profile-card-name {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.profile-card-contact a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: border-color 0.3s ease;
+}
+
+.profile-card-contact a:hover {
+    border-color: #fff;
+}
+
 /* --- Variables et Styles Globaux --- */
 :root {
     --font-family: 'Poppins', sans-serif;
@@ -575,6 +667,42 @@ body {
     .project-card-v2 {
         max-width: 950px;
     }
+}
+
+/* --- Responsive de la Fiche Profil --- */
+
+/* Desktop : Popup centrée */
+@media (min-width: 769px) {
+    .profile-card {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    .profile-card.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Mobile : Bottom Sheet */
+@media (max-width: 768px) {
+    .profile-card {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        padding: 1.5rem;
+        padding-top: 2.5rem; /* Espace pour le bouton fermer */
+        transform: translateY(100%);
+        transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .profile-card.show {
+        transform: translateY(0);
+    }
+
+    .profile-card-title { font-size: 1.5rem; }
+    .profile-card-name { font-size: 1rem; }
 }
 
 /* --- Mise en page Desktop pour le carrousel des sites --- */

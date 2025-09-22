@@ -245,7 +245,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 6. Gestion des onglets du menu ---
+    // --- 6. Gestion de la fiche de profil ---
+    const profilePic = document.querySelector('.profile-pic-static');
+    const profileOverlay = document.getElementById('profile-overlay');
+    const profileCard = document.getElementById('profile-card');
+    const closeProfileButton = document.getElementById('close-profile-card');
+
+    function openProfileCard() {
+        profileOverlay.classList.add('visible');
+        profileCard.classList.add('show');
+    }
+
+    function closeProfileCard() {
+        profileOverlay.classList.remove('visible');
+        profileCard.classList.remove('show');
+    }
+
+    profilePic.addEventListener('click', (e) => {
+        e.preventDefault(); // Empêche le comportement par défaut si c'est un lien
+        openProfileCard();
+    });
+
+    closeProfileButton.addEventListener('click', closeProfileCard);
+    profileOverlay.addEventListener('click', closeProfileCard);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && profileOverlay.classList.contains('visible')) {
+            closeProfileCard();
+        }
+    });
+
+    // --- 7. Gestion des onglets du menu ---
     menuItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
