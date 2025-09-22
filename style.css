@@ -616,14 +616,27 @@ body {
         align-self: center;
     }
 
-    /* On réinitialise les styles des contrôles pour desktop */
+    /* Les contrôles sont gérés par les flèches directement */
     #sites-section .carousel-controls {
-        display: none; /* On cache la barre de contrôle mobile */
+        display: contents; /* Cet élément ne participe pas à la mise en page */
     }
 
     #sites-section .carousel-arrow {
         position: absolute;
+        top: 50%;
         transform: translateY(-50%);
+        z-index: 5; /* S'assurer qu'elles sont au-dessus */
+    }
+
+    #sites-section .carousel-arrow.prev { left: 20px; }
+    #sites-section .carousel-arrow.next { right: 20px; }
+
+    #sites-section .carousel-indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
     }
 }
 
@@ -717,19 +730,19 @@ body {
     }
 
     /* 8. On réinitialise la position des flèches et indicateurs */
-    #sites-section .carousel-arrow,
-    #sites-section .carousel-indicators {
+    #sites-section .carousel-controls .carousel-arrow,
+    #sites-section .carousel-controls .carousel-indicators {
         position: static;
         transform: none;
     }
 
-    #sites-section .carousel-arrow {
+    #sites-section .carousel-controls .carousel-arrow {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
     }
 
-    #sites-section .carousel-indicators {
+    #sites-section .carousel-controls .carousel-indicators {
         padding: 0;
     }
 }
