@@ -1,3 +1,617 @@
+/* --- Variables et Styles Globaux --- */
+:root {
+    --font-family: 'Poppins', sans-serif;
+    --text-color: #ffffff;
+    --arrow-bg: rgba(0, 0, 0, 0.3);
+    --arrow-hover-bg: rgba(0, 0, 0, 0.6);
+    --indicator-color: rgba(255, 255, 255, 0.5);
+    --indicator-active-color: #ffffff;
+
+    --accent-ia: #764ba2;
+    --accent-ia-2: #667eea;
+    --accent-apps: #00c9a7;
+    --accent-apps-2: #0f9d58;
+    --accent-missions: #ff9a5a;
+    --accent-missions-2: #ff5e7e;
+
+    --card-bg: rgba(255, 255, 255, 0.12);
+    --card-border: rgba(255, 255, 255, 0.22);
+    --card-bg-hover: rgba(255, 255, 255, 0.18);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fond vivant : un grand dégradé multicolore qui dérive lentement,
+   dans l'esprit des dégradés uniques par projet de l'original,
+   mais continu puisqu'il n'y a plus un seul slide "actif". */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    min-height: 100vh;
+    background: linear-gradient(120deg,
+        #0f2027 0%,
+        #302b63 20%,
+        #764ba2 40%,
+        #232526 60%,
+        #0f9d58 80%,
+        #0f2027 100%);
+    background-size: 400% 400%;
+    animation: driftBackground 40s ease-in-out infinite;
+    padding: 20px;
+    padding-top: 150px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes driftBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Halos flous qui dérivent en arrière-plan, pour donner de la profondeur
+   derrière le verre dépoli des cartes (comme le fond derrière le carrousel). */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: -1;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+body::before {
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, #667eea, transparent 70%);
+    top: -10%;
+    left: -10%;
+    animation: floatBlob1 26s ease-in-out infinite;
+}
+
+body::after {
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, #ff5e7e, transparent 70%);
+    bottom: -10%;
+    right: -10%;
+    animation: floatBlob2 32s ease-in-out infinite;
+}
+
+@keyframes floatBlob1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(8vw, 10vh) scale(1.15); }
+}
+
+@keyframes floatBlob2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-6vw, -8vh) scale(1.1); }
+}
+
+/* Halo réactif : deux calques qui se relaient en crossfade (comme le fond
+   d'origine qui changeait à chaque slide) pour suivre la carte active
+   du carrousel actuellement manipulé. */
+.bg-spotlight {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+}
+
+.bg-spotlight.active {
+    opacity: 0.5;
+}
+
+a {
+    color: inherit;
+}
+
+/* --- Photo de Profil Statique --- */
+.profile-pic-static {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 101;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-pic-static:hover {
+    transform: scale(1.1);
+}
+
+/* --- En-tête / Navigation --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 15px 15px 100px;
+    background: rgba(15, 12, 41, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.category-nav {
+    display: flex;
+    gap: 8px;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+}
+
+.category-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-link {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.external-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.external-link {
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.external-link:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.external-link-accent {
+    background: linear-gradient(135deg, var(--accent-ia-2), var(--accent-ia));
+    opacity: 1;
+    font-weight: 600;
+}
+
+.external-link-accent:hover {
+    filter: brightness(1.15);
+}
+
+/* --- Hero --- */
+.hero {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    opacity: 0.85;
+}
+
+/* --- Sections de catégorie --- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category-section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 140px;
+}
+
+.category-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* --- Carrousel de cartes (une rangée par catégorie, comme l'original) --- */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: scale(0.96) translateY(15px);
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+}
+
+.carousel-wrapper.in-view {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.carousel-viewport {
+    flex: 1;
+    overflow: hidden;
+    /* Fondu sur les bords : les cartes qui entrent/sortent s'estompent,
+       pour retrouver la sensation de crossfade du carrousel d'origine
+       même si le mouvement lui-même est un glissement. */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.6s ease-in-out;
+    will-change: transform;
+}
+
+.carousel-arrow {
+    flex-shrink: 0;
+    background-color: var(--arrow-bg);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 2;
+}
+
+.carousel-arrow:hover {
+    background-color: var(--arrow-hover-bg);
+    transform: scale(1.08);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1.2rem;
+}
+
+.carousel-indicators .indicator {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--indicator-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-indicators .indicator.active {
+    background-color: var(--indicator-active-color);
+    transform: scale(1.25);
+}
+
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px;
+    /* 3 cartes visibles sur desktop, ajustées par media query plus bas */
+    flex: 0 0 calc((100% - 2 * 20px) / 3);
+    min-width: 0;
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: var(--card-accent, linear-gradient(90deg, #667eea, #764ba2));
+    opacity: 0.5;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: var(--card-bg-hover);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 0 0 30px var(--card-glow, rgba(118, 75, 162, 0.35));
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Vraie capture d'écran en tête de carte, comme le faisait l'original */
+.project-card-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.project-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-card-media img {
+    transform: scale(1.06);
+}
+
+.project-card-media-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+}
+
+.project-card-icon {
+    font-size: 2.2rem;
+}
+
+.project-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.project-card-pitch {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.5;
+    opacity: 0.85;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-card-status {
+    margin-top: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* --- Bloc Méthode --- */
+.method-block {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.method-text {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+.method-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent-ia-2), var(--accent-ia));
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* --- Bloc Débuts --- */
+.debuts-block {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.debuts-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* --- Modal Projet --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    z-index: 1001;
+    width: 90vw;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    /* Même verre dépoli clair que la fiche profil d'origine, pas un fond sombre opaque */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 2.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+}
+
+.project-modal.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.2rem;
+}
+
+.modal-tags .tag {
+    padding: .25rem .7rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-description {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+    opacity: 0.95;
+}
+
+.modal-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-meta-line {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.modal-meta-line strong {
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.modal-gallery {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    margin-bottom: 1.3rem;
+}
+
+.modal-gallery img {
+    height: 160px;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.modal-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--accent-ia-2), var(--accent-ia));
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: filter 0.3s ease;
+}
+
+.modal-link:hover {
+    filter: brightness(1.15);
+}
+
+.modal-link-disabled {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0.6;
+}
+
 /* --- Fiche de Profil --- */
 .profile-overlay {
     position: fixed;
@@ -31,12 +645,15 @@
     visibility: hidden;
     transform: scale(0.95);
     transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
 }
 
 .profile-card.show {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .close-button {
@@ -90,787 +707,60 @@
     border-color: #fff;
 }
 
-/* --- Variables et Styles Globaux --- */
-:root {
-    --font-family: 'Poppins', sans-serif;
-    --text-color: #ffffff;
-    --arrow-bg: rgba(0, 0, 0, 0.3);
-    --arrow-hover-bg: rgba(0, 0, 0, 0.6);
-    --indicator-color: rgba(255, 255, 255, 0.5);
-    --indicator-active-color: #ffffff;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-family);
-    color: var(--text-color);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    transition: background 0.8s ease-in-out;
-}
-
-/* --- Photo de Profil Statique --- */
-.profile-pic-static {
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 101;
-    transition: transform 0.3s ease;
-}
-
-.profile-pic-static:hover {
-    transform: scale(1.1);
-}
-
-/* --- Nouvelle Navigation par Boutons --- */
-.section-switcher {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    max-width: 500px;
-    position: fixed; /* Positionné en haut sur mobile */
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-}
-
-.section-switcher .menu-item {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 15px;
-    border-radius: 999px; /* Style "pill" */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--text-color);
-    font-family: var(--font-family);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.section-switcher .menu-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.section-switcher .menu-item.active {
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.section-switcher .icon {
-    font-size: 1.2rem;
-}
-
-/* --- Conteneur Principal du Carrousel --- */
-/* --- Sections de contenu --- */
-.content-section {
-    display: none;
-}
-
-.content-section.active {
-    display: block;
-}
-
-.main-title {
-    font-size: 2rem;
-    font-weight: 300;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-/* --- Conteneur du Carrousel --- */
-.carousel-container {
-    position: relative;
-    width: 90vw;
-    max-width: 1100px;
-    height: 70vh;
-    max-height: 600px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-}
-
-/* --- Carte Projet v2 (Jeu Android) --- */
-.project-card-v2 {
-    display: flex;
-    gap: 35px;
-    width: 90vw;
-    max-width: 950px;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    align-items: center;
-}
-
-/* Colonne de gauche */
-.project-info-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-}
-
-.project-logo {
-    width: 130px;
-    height: 130px;
-    border-radius: 25px;
-    border: 3px solid #fff;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-    flex-shrink: 0;
-}
-
-.project-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.project-description {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-/* Colonne de droite */
-.project-carousel-column {
-    flex: 0 0 300px; /* Largeur fixe pour le téléphone */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.phone-mockup {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 19.5;
-    background-color: #1a1a1a;
-    border-radius: 40px;
-    border: 10px solid #111;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 3px rgba(255,255,255,0.1);
-    overflow: hidden;
-}
-
-.project-carousel-slides {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.project-slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-}
-
-.project-slide.active {
-    opacity: 1;
-}
-
-.project-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Assure que l'image est visible en entier */
-}
-
-.project-carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    font-size: 1rem;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-}
-
-.project-carousel-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.project-carousel-arrow.prev { left: 15px; }
-.project-carousel-arrow.next { right: 15px; }
-
-.project-carousel-indicators {
-    display: flex;
-    gap: 8px;
-}
-
-.project-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--indicator-color);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.project-indicator.active {
-    background-color: var(--indicator-active-color);
-}
-
-.carousel-slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* --- Style d'une Diapositive (Slide) --- */
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column; /* Pour le positionnement des tags */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 1;
-    padding: 20px; /* Ajout de padding pour l'effet carte */
-}
-
-.slide.active {
-    opacity: 1;
-    z-index: 2;
-}
-
-.slide-content {
-    max-width: 900px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* --- Nouveaux styles pour les slides --- */
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.project-tags .tag {
-    padding: .25rem .6rem;
-    border-radius: 999px;
-    font-size: .85rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.slide-content.two-columns {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    width: 100%;
-    align-items: center;
-    text-align: left;
-}
-
-.slide-content .left {
-    flex: 1;
-}
-
-.slide-content .right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.project-screenshot {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.placeholder {
-    width: 100%;
-    height: 300px; /* Ajustez la hauteur si nécessaire */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    background-color: rgba(0,0,0,0.2);
-    color: rgba(255,255,255,0.7);
-    font-size: 1.2rem;
-}
-
-.slide-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.project-desc {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-}
-
-.invitation {
-    font-size: 0.9rem;
-    font-style: italic;
-    opacity: 0.8;
-}
-
-.playstore-badge {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--text-color);
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-weight: 400;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-}
-
-.playstore-badge:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-/* --- Flèches de Navigation --- */
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
-    background-color: var(--arrow-bg);
-    color: var(--text-color);
-    border: none;
-    cursor: pointer;
-    padding: 15px;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-arrow:hover {
-    background-color: var(--arrow-hover-bg);
-}
-
-.carousel-arrow.prev {
-    left: 20px;
-}
-
-.carousel-arrow.next {
-    right: 20px;
-}
-
-/* --- Indicateurs (Bullets) --- */
-.carousel-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    gap: 10px;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--indicator-color);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.indicator.active {
-    background-color: var(--indicator-active-color);
-}
-
-/* --- Responsive Design (Mobile-First) --- */
-
-/* Styles par défaut pour mobile */
-body {
-    padding: 15px;
-    padding-top: 90px; /* Espace pour les boutons en haut */
-    padding-bottom: 100px; /* Espace pour la photo de profil en bas */
-}
-
-.profile-pic-static {
-    top: auto;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-}
-
-.profile-pic {
-    width: 60px;
-    height: 60px;
-}
-
-.main-title {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-}
-
-.carousel-container {
-    height: 65vh; /* Hauteur pour le carrousel principal sur mobile */
-}
-
-.project-card-v2 {
-    flex-direction: column;
-    padding: 20px;
-    gap: 25px;
-}
-
-.project-info-column {
-    flex: 1; /* Prend toute la largeur disponible */
-}
-
-.project-card-v2 {
-    min-height: 80vh;
-}
-
-.project-carousel-column {
-    flex: 1;
-    width: 100%;
-    max-width: 280px; /* Largeur max du téléphone sur mobile */
-    display: flex; /* S'assurer que le contenu est bien géré */
-    flex-direction: column;
-    align-items: center;
-}
-
-.project-logo {
-    width: 100px;
-    height: 100px;
-}
-
-.project-title {
-    font-size: 1.5rem;
-}
-
-.project-description {
-    font-size: 0.95rem;
-}
-
-
-/* --- Styles pour tablettes et plus grands écrans --- */
-
-
-
-
-
-@media (min-width: 768px) {
+/* --- Responsive --- */
+@media (max-width: 767px) {
     body {
-        padding: 30px;
-        padding-bottom: 30px; /* Rétablir le padding normal */
-        padding-left: 120px; /* Espace pour la photo */
+        padding: 15px;
+        padding-top: 130px;
     }
 
     .profile-pic-static {
-        top: 30px; /* On la remet en haut */
-        left: 30px; /* On la remet à gauche */
-        bottom: auto;
-        transform: none;
+        top: 12px;
+        left: 12px;
+        width: 44px;
+        height: 44px;
     }
 
-    .section-switcher {
-        flex-direction: row; /* Les boutons redeviennent horizontaux */
-        position: fixed;
-        top: auto; /* On annule la position haute */
-        bottom: 20px; /* On remet en bas */
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
+    .site-header {
+        padding-left: 70px;
     }
 
-    .main-title {
-        font-size: 2rem;
-    }
-
-    .project-card-v2 {
-        flex-direction: row;
-        padding: 30px;
-        gap: 35px;
-    }
-
-    .project-carousel-column {
-        flex: 0 0 300px;
-    }
-
-    .project-logo {
-        width: 130px;
-        height: 130px;
-    }
-
-    .project-title {
+    .hero-title {
         font-size: 1.8rem;
     }
-}
 
-/* Ajustements pour les grands écrans */
-@media (min-width: 1024px) {
-    .project-card-v2 {
-        max-width: 950px;
-    }
-}
-
-/* --- Responsive de la Fiche Profil --- */
-
-/* Desktop : Popup centrée */
-@media (min-width: 769px) {
-    .profile-card {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.95);
+    .hero-subtitle {
+        font-size: 0.95rem;
     }
 
-    .profile-card.show {
-        transform: translate(-50%, -50%) scale(1);
+    .category-title {
+        font-size: 1.3rem;
     }
-}
 
-/* Mobile : Bottom Sheet */
-@media (max-width: 768px) {
-    .profile-card {
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        border-radius: 20px 20px 0 0;
+    .project-card {
+        flex: 0 0 100%;
+    }
+
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+
+    .project-modal {
         padding: 1.5rem;
-        padding-top: 2.5rem; /* Espace pour le bouton fermer */
-        transform: translateY(100%);
-        transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
-    }
-
-    .profile-card.show {
-        transform: translateY(0);
-    }
-
-    .profile-card-title { font-size: 1.5rem; }
-    .profile-card-name { font-size: 1rem; }
-}
-
-/* --- Mise en page Desktop pour le carrousel des sites --- */
-@media (min-width: 769px) {
-    #sites-section .slide-content {
-        display: grid;
-        /* Définition des zones de la grille */
-        grid-template-areas:
-            "title title"
-            "tags tags"
-            "text image";
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto 1fr; /* 3 lignes: titre, tags, contenu */
-        gap: 1rem 30px; /* Espace vertical et horizontal */
-        align-items: center;
-        height: 100%;
-        padding: 2rem;
-    }
-
-    /* On place chaque élément dans sa zone */
-    #sites-section .slide-title {
-        grid-area: title;
-        text-align: center;
-    }
-
-    #sites-section .project-tags {
-        grid-area: tags;
-        justify-content: center; /* Centre les tags */
-    }
-
-    #sites-section .text-content {
-        grid-area: text;
-        text-align: left;
-        align-self: center;
-    }
-
-    #sites-section .image-container {
-        grid-area: image;
-        align-self: center;
-    }
-
-    /* Les contrôles sont gérés par les flèches directement */
-    #sites-section .carousel-controls {
-        display: contents; /* Cet élément ne participe pas à la mise en page */
-    }
-
-    #sites-section .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 5; /* S'assurer qu'elles sont au-dessus */
-    }
-
-    #sites-section .carousel-arrow.prev { left: 20px; }
-    #sites-section .carousel-arrow.next { right: 20px; }
-
-    #sites-section .carousel-indicators {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 5;
+        max-height: 90vh;
     }
 }
 
-/* --- Mise en page mobile pour le carrousel des sites --- */
-@media (max-width: 768px) {
-
-    /* 1. On simplifie le conteneur principal */
-    #sites-section .carousel-container {
-        border: none;
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        box-shadow: none;
-        height: auto;
-        overflow: visible;
-        padding: 0;
-        width: 100%;
+@media (min-width: 768px) and (max-width: 1023px) {
+    .project-card {
+        flex: 0 0 calc((100% - 20px) / 2);
     }
+}
 
-    /* 2. On cache les slides inactives */
-    #sites-section .slide {
-        display: none;
-        padding: 1rem;
-        border-radius: 15px;
-        background: rgba(0,0,0,0.1);
-    }
-
-    /* 3. La slide active est affichée en bloc */
-    #sites-section .slide.active {
-        display: block;
-    }
-
-    /* 4. Mise en page FLEX pour le contenu de la slide */
-    #sites-section .slide-content {
-        display: flex;
-        flex-direction: column; /* La clé : une pile verticale */
-        gap: 1.2rem; /* Espace entre chaque élément */
-        text-align: center;
-        padding: 0;
-    }
-
-    /* 5. On définit l'ORDRE des éléments */
-    #sites-section .project-tags { order: 1; }
-    #sites-section .image-container { order: 2; }
-    #sites-section .slide-title { order: 3; }
-    #sites-section .text-content { order: 4; }
-
-    /* 6. On regroupe les contrôles à la fin */
-    #sites-section .carousel-controls {
-        order: 5; /* Placé après tout le contenu */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-        margin-top: 1rem;
-    }
-
-    /* 7. Styles des éléments pour le mobile */
-    #sites-section .project-tags {
-        justify-content: center;
-    }
-
-    #sites-section .image-container a {
-        display: block; /* Assure que le lien prend toute la place */
-    }
-
-    #sites-section .project-screenshot {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    #sites-section .slide-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-    }
-
-    #sites-section .text-content {
-        text-align: left;
-    }
-
-    #sites-section .project-desc {
-        font-size: 0.9rem;
-        max-width: 95%;
-        margin: 0 auto;
-        line-height: 1.5;
-    }
-
-    #sites-section .invitation {
-        display: none; /* On cache l'invitation sur mobile pour alléger */
-    }
-
-    /* 8. On réinitialise la position des flèches et indicateurs */
-    #sites-section .carousel-controls .carousel-arrow,
-    #sites-section .carousel-controls .carousel-indicators {
-        position: static;
-        transform: none;
-    }
-
-    #sites-section .carousel-controls .carousel-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-
-    #sites-section .carousel-controls .carousel-indicators {
-        padding: 0;
+@media (min-width: 1024px) {
+    .project-card {
+        flex: 0 0 calc((100% - 2 * 20px) / 3);
     }
 }

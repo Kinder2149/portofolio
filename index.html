@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
+    <title>Valentin Coutry — Portfolio</title>
+    <meta name="description" content="De l'automatisation IA sur mesure à l'application complète livrée. Architecture d'agents IA, applications, jeux et missions clientes.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,65 +15,95 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Halos de fond qui se relaient (crossfade) pour suivre la carte active du carrousel -->
+    <div class="bg-spotlight spotlight-a"></div>
+    <div class="bg-spotlight spotlight-b"></div>
+
     <img src="assets/kinder.png" alt="Photo de profil" class="profile-pic-static">
 
-    <header class="section-switcher">
-        <button class="menu-item active" data-section="sites-section">
-            <span class="icon">🌐</span>
-            <span class="text">Sites internet</span>
-        </button>
-        <button class="menu-item" data-section="jeux-section">
-            <span class="icon">📱</span>
-            <span class="text">Apps Android</span>
-        </button>
+    <header class="site-header">
+        <nav class="category-nav">
+            <a href="#cat-ia" class="nav-link">🧠 Architecture IA</a>
+            <a href="#cat-apps" class="nav-link">🚀 Apps &amp; jeux</a>
+            <a href="#cat-missions" class="nav-link">🤝 Missions clientes</a>
+            <a href="#cat-methode" class="nav-link">🛠️ Méthode</a>
+            <a href="#cat-debuts" class="nav-link">🌱 Mes débuts</a>
+        </nav>
+        <div class="external-links">
+            <a href="https://www.linkedin.com/in/valentin-coutry-ab1ba41a9/" target="_blank" rel="noopener noreferrer" class="external-link">LinkedIn</a>
+            <a href="https://atelier-connecte.github.io/Atelier-Connect-/" target="_blank" rel="noopener noreferrer" class="external-link external-link-accent">Atelier Connecté — Devis</a>
+        </div>
     </header>
 
     <main>
-        <!-- Section pour les sites internet (visible par défaut) -->
-        <section id="sites-section" class="content-section active">
-            <h1 class="main-title">Les sites internet</h1>
-            <div class="carousel-container">
-                <div class="carousel-slides"></div>
-                <button class="carousel-arrow prev">&#10094;</button>
-                <button class="carousel-arrow next">&#10095;</button>
-                <div class="carousel-indicators"></div>
+        <div class="hero">
+            <h1 class="hero-title">Valentin Coutry</h1>
+            <p class="hero-subtitle">De l'automatisation IA sur mesure à l'application complète livrée.</p>
+        </div>
+
+        <!-- 1. Architecture IA -->
+        <section id="cat-ia" class="category-section">
+            <h2 class="category-title">🧠 Architecture IA</h2>
+            <div class="carousel-wrapper" data-category="ia">
+                <button class="carousel-arrow prev" aria-label="Projet précédent">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track"></div>
+                </div>
+                <button class="carousel-arrow next" aria-label="Projet suivant">&#10095;</button>
+            </div>
+            <div class="carousel-indicators"></div>
+        </section>
+
+        <!-- 2. Applications & jeux pilotés par IA -->
+        <section id="cat-apps" class="category-section">
+            <h2 class="category-title">🚀 Applications &amp; jeux pilotés par IA</h2>
+            <div class="carousel-wrapper" data-category="apps">
+                <button class="carousel-arrow prev" aria-label="Projet précédent">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track"></div>
+                </div>
+                <button class="carousel-arrow next" aria-label="Projet suivant">&#10095;</button>
+            </div>
+            <div class="carousel-indicators"></div>
+        </section>
+
+        <!-- 3. Missions clientes livrées -->
+        <section id="cat-missions" class="category-section">
+            <h2 class="category-title">🤝 Missions clientes livrées</h2>
+            <div class="carousel-wrapper" data-category="missions">
+                <button class="carousel-arrow prev" aria-label="Projet précédent">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track"></div>
+                </div>
+                <button class="carousel-arrow next" aria-label="Projet suivant">&#10095;</button>
+            </div>
+            <div class="carousel-indicators"></div>
+        </section>
+
+        <!-- 4. Méthode & environnement de travail -->
+        <section id="cat-methode" class="category-section">
+            <h2 class="category-title">🛠️ Méthode &amp; environnement de travail</h2>
+            <div class="method-block">
+                <p class="method-text">Je ne code pas « avec de l'IA » au hasard — j'ai construit une méthodologie versionnée et documentée, appliquée systématiquement à chaque projet : structure de fichiers standardisée, règles de comportement pour l'IA, protocole d'arbitrage en cas de contradiction, fichier de contexte dédié par projet. J'ai aussi développé <strong>graphify</strong>, un outil qui génère un graphe de connaissance à partir de n'importe quel code ou document, pour garder une vision claire de chaque projet à mesure qu'il grossit. Ma configuration d'environnement (permissions fines, automatisations, connexions à mes outils) est pensée pour que le pilotage par IA reste rigoureux et traçable — pas de l'improvisation.</p>
+                <span class="method-tag">Ce que ça démontre : une discipline d'organisation et de gouvernance de projet rare pour un profil piloté à 100% par IA.</span>
             </div>
         </section>
 
-        <!-- Section pour les jeux Android (cachée par défaut) -->
-        <section id="jeux-section" class="content-section">
-            <h1 class="main-title">Jeu Android</h1>
-            <div class="project-card-v2">
-                <!-- Colonne de Gauche : Infos -->
-                <div class="project-info-column">
-                    <a href="https://play.google.com/store/apps/details?id=com.kinder2149.paperclip2" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/logo_paperperclip.jpg" alt="Logo ClipFactory Empire" class="project-logo" loading="lazy">
-                    </a>
-                    <div class="project-text">
-                        <h2 class="project-title">ClipFactory Empire</h2>
-                        <p class="project-description">
-                            Devenez le magnat du trombone ! Commencez avec une simple machine et développez votre empire en produisant, vendant et améliorant vos trombones. Gérez vos ressources et dominez le marché.
-                        </p>
-                        <a class="playstore-badge" href="https://play.google.com/store/apps/details?id=com.kinder2149.paperclip2" target="_blank" rel="noopener noreferrer">Voir sur le Play Store</a>
-                    </div>
-                </div>
-
-                <!-- Colonne de Droite : Carrousel -->
-                <div class="project-carousel-column">
-                    <div class="phone-mockup">
-                        <div class="project-carousel-slides">
-                            <!-- Les images seront injectées par JS -->
-                        </div>
-                        <button class="project-carousel-arrow prev">&#10094;</button>
-                        <button class="project-carousel-arrow next">&#10095;</button>
-                    </div>
-                    <div class="project-carousel-indicators">
-                        <!-- Les indicateurs seront injectés par JS -->
-                    </div>
-                </div>
+        <!-- 5. Mes débuts -->
+        <section id="cat-debuts" class="category-section">
+            <h2 class="category-title">🌱 Mes débuts</h2>
+            <div class="debuts-block">
+                <p class="debuts-text">Avant l'architecture d'agents, il y a eu des dizaines de petits sites — pour des événements que j'organisais en tant que référent jeunesse (jeux de piste, séjours, actions de communication avec les familles), puis mes premières missions freelance en Shopify. C'est là que tout a commencé.</p>
             </div>
         </section>
     </main>
+
+    <!-- Modal de détail projet -->
+    <div id="project-modal-overlay" class="modal-overlay"></div>
+    <div id="project-modal" class="project-modal">
+        <button id="close-modal" class="close-button">&times;</button>
+        <div id="modal-content" class="modal-content"></div>
+    </div>
 
     <!-- Fiche de profil (cachée par défaut) -->
     <div id="profile-overlay" class="profile-overlay"></div>
