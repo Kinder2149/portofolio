@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     stack: ['FastAPI (Python)', 'ChromaDB', 'OpenRouter'],
                     result: 'Testé en charge sur 14 jours simulés : 0 échec de job, 0 fallback de routing.',
                     role: 'Conception de l’orchestrateur, des prompts système, du routing par coût/performance.',
+                    image: 'projects/big-bertha.png',
                     link: null
                 },
                 {
