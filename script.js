@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     result: null,
                     role: null,
                     status: 'Cœur de jeu stable, pas encore publié sur le store',
+                    image: 'projects/paperclip2.png',
                     link: null
                 },
                 {
@@ -93,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     result: null,
                     role: null,
                     status: 'Le plus abouti de mes projets Godot',
+                    image: 'projects/escape-room.png',
                     link: null
                 },
                 {
@@ -113,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     result: null,
                     role: null,
                     status: 'Fonctionnel, en développement',
+                    image: 'projects/flashcard-memory.png',
                     link: null
                 }
             ]
@@ -149,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     stack: ['HTML / CSS / JS'],
                     result: null,
                     role: null,
+                    image: 'projects/restaurant-pointe-de-reve.png',
                     link: null
                 },
                 {
