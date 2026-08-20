@@ -103,5 +103,5 @@ portofolio/
 ## 9. BACKLOG
 
 1. Confirmer avec Kinder si ce portfolio est toujours d'actualité (dernier commit ancien, "Final version 1.17" suggère un projet clos) — sinon, le marquer explicitement comme archivé.
-2. `PROFIL_DEVELOPPEUR_KEAMDER.md` fait doublon avec le profil Kinder global tenu par Claude Code (`~/.claude/projects/C--DEV/memory/user_kinder.md`) — à archiver ici, ce n'est pas un document de projet.
+2. `PROFIL_DEVELOPPEUR_KEAMDER.md` fait doublon avec le profil Kinder global tenu par Claude Code (`~/.claude/projects/V--DEV/memory/user_kinder.md`) — à archiver ici, ce n'est pas un document de projet.
 3. Pas de `CHANGELOG.md` — dispensable vu la taille du projet, l'historique des commits git suffit.
