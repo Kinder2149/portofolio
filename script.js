@@ -65,17 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     link: { url: 'https://play.google.com/store/apps/details?id=com.kinder2149.paperclip2', label: 'Voir sur le Play Store' }
                 },
                 {
-                    icon: '🖇️',
-                    title: 'PaperClip2',
-                    pitch: "Un jeu mobile « idle » (production/vente de trombones) avec sauvegarde cloud synchronisée entre appareils.",
-                    stack: ['Flutter', 'Firebase'],
-                    result: null,
-                    role: null,
-                    status: 'Cœur de jeu stable, pas encore publié sur le store',
-                    image: 'projects/paperclip2.png',
-                    link: null
-                },
-                {
                     icon: '🎬',
                     title: 'TMDB — Mon suivi de films/séries',
                     pitch: "Une application personnelle de suivi de films et séries, avec profils locaux et intégration d’API externe.",
@@ -98,24 +87,36 @@ document.addEventListener('DOMContentLoaded', () => {
                     link: null
                 },
                 {
-                    icon: '🏰',
-                    title: 'TerraNova',
-                    pitch: "Un jeu de gestion de colonie avec système de ressources, artisans et progression par ticks.",
+                    icon: '🗂️',
+                    title: 'FlashCard_Memory',
+                    pitch: "Une application de flashcards avec import direct depuis Google Sheets (ou un fichier Excel local), génération de cartes par thème et statistiques de réussite par carte et par sens.",
                     stack: ['Flutter'],
                     result: null,
                     role: null,
-                    status: 'En pause',
+                    status: 'En ligne',
+                    image: 'projects/flashcard-memory.png',
                     link: null
                 },
                 {
-                    icon: '🗂️',
-                    title: 'FlashCard_Memory',
-                    pitch: "Une application de flashcards avec import direct depuis Google Sheets et statistiques de réussite par carte.",
-                    stack: ['Flutter'],
+                    icon: '📺',
+                    title: 'Vault Watch',
+                    pitch: "Suivi personnel de films et séries (en remplacement de TVShowTime) : progression épisode par épisode, listes personnalisées, notes et « Quoi regarder ce soir ? ». 100% embarqué sur le téléphone, catalogue TMDB, sauvegarde vers le Drive personnel.",
+                    stack: ['React', 'Capacitor', 'SQLite embarqué', 'API TMDB'],
                     result: null,
                     role: null,
-                    status: 'Fonctionnel, en développement',
-                    image: 'projects/flashcard-memory.png',
+                    status: 'Publication sur le Play Store dans quelques jours',
+                    image: 'projects/vault-watch.png',
+                    gallery: ['projects/vault-watch-1.png', 'projects/vault-watch-2.png', 'projects/vault-watch-3.png'],
+                    link: null
+                },
+                {
+                    icon: '📚',
+                    title: 'Vault Read',
+                    pitch: "Suivi personnel de lecture, second projet de la même famille que Vault Watch : bibliothèque, progression, cycles/tomes, catalogue croisé Google Books / Open Library. 100% local et hors-serveur, empaqueté en application Android.",
+                    stack: ['React', 'Capacitor', 'SQLite embarqué', 'Google Books API', 'Open Library'],
+                    result: null,
+                    role: null,
+                    status: 'En phase de test',
                     link: null
                 }
             ]
@@ -124,17 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
             accent: 'linear-gradient(90deg, #ff5e7e, #ff9a5a)',
             glow: 'rgba(255, 94, 126, 0.4)',
             items: [
-                {
-                    icon: '🎨',
-                    title: 'SebARTian LECUZE',
-                    pitch: "Site vitrine bilingue (FR/EN) pour un peintre professionnel, avec une charte graphique dédiée.",
-                    stack: ['HTML / CSS / JS'],
-                    result: null,
-                    role: null,
-                    status: 'Livré et validé par le client',
-                    image: 'projects/sebartian-lecuze.png',
-                    link: { url: 'https://kinder2149.github.io/SebARTian_LECUZE/', label: 'Voir le site' }
-                },
                 {
                     icon: '🍷',
                     title: 'Le Tourbillon de la Vigne',

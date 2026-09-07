@@ -310,6 +310,11 @@ main {
     transform: scale(1.08);
 }
 
+/* Bloc Architecture IA : pas de carrousel à faire défiler (peu de cartes), on retire les flèches */
+.carousel-wrapper[data-category="ia"] .carousel-arrow {
+    display: none;
+}
+
 .carousel-indicators {
     display: flex;
     justify-content: center;

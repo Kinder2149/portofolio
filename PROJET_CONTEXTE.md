@@ -4,9 +4,9 @@
 > Toute décision qui contredit ce fichier est interdite.
 > Si une demande sort de ce cadre : poser UNE question avant d'agir.
 
-**Version** : 1.0
+**Version** : 1.1
 **Famille** : Perso
-**Dernière mise à jour** : 2026-08-06
+**Dernière mise à jour** : 2026-09-07
 
 ---
 
@@ -17,10 +17,10 @@
 | Nom | Portfolio Keamder |
 | Famille | Perso |
 | Type | Site statique |
-| Objectif (1 phrase) | Portfolio personnel de Kinder présentant ses réalisations (sites internet, jeu Android "ClipFactory Empire"). |
-| Statut | Construit — "Final version 1.17" au dernier commit, semble terminé |
-| Utilisateurs | Visiteurs du portfolio |
-| Dernière mise à jour | Dernier commit git : "Ajout .gitignore et profil développeur" |
+| Objectif (1 phrase) | Portfolio personnel de Kinder présentant ses réalisations (architecture IA, applications & jeux, missions clientes). |
+| Statut | Actif — remis à jour le 2026-09-07 pour mise en production (ajout Vault Watch/Vault Read, retrait des projets non pertinents, confirmé après audit croisé des projets sources) |
+| Utilisateurs | Visiteurs du portfolio, recruteurs |
+| Dernière mise à jour | Session du 2026-09-07 : contenu revu après audit + graphify sur les projets sources (Vault Read, FlashCard_Memory, escape-room, tourbillon-de-la-vigne, Restaurant_Pointe_de_Rêve, TerraNova) |
 
 ---
 
@@ -102,6 +102,7 @@ portofolio/
 
 ## 9. BACKLOG
 
-1. Confirmer avec Kinder si ce portfolio est toujours d'actualité (dernier commit ancien, "Final version 1.17" suggère un projet clos) — sinon, le marquer explicitement comme archivé.
+1. ~~Confirmer avec Kinder si ce portfolio est toujours d'actualité~~ — **Résolu 2026-09-07** : toujours d'actualité, remis à jour pour envoi en production.
 2. `PROFIL_DEVELOPPEUR_KEAMDER.md` fait doublon avec le profil Kinder global tenu par Claude Code (`~/.claude/projects/V--DEV/memory/user_kinder.md`) — à archiver ici, ce n'est pas un document de projet.
 3. Pas de `CHANGELOG.md` — dispensable vu la taille du projet, l'historique des commits git suffit.
+4. Vault Read n'a pas de vraie capture d'écran disponible dans son projet source (seulement des icônes) — carte publiée sans image (fallback icône), à mettre à jour si une capture devient disponible.
