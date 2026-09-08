@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     stack: ['LibreChat (Node.js)', 'OpenRouter', 'MongoDB', 'MCP (filesystem + Notion)', 'Docker'],
                     result: '-63% de coût sur une mission comparable, -62% sur l’élagage de contexte (mesuré en production).',
                     role: 'Architecture de l’équipe d’agents, arbitrages de sécurité et de coût, pilotage de l’optimisation.',
+                    image: 'projects/librechat-jarvis.png',
                     link: { url: 'https://github.com/Kinder2149/librechat-jarvis', label: 'Voir le repo' }
                 },
                 {
