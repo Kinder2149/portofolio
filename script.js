@@ -65,17 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     link: { url: 'https://play.google.com/store/apps/details?id=com.kinder2149.paperclip2', label: 'Voir sur le Play Store' }
                 },
                 {
-                    icon: '🎬',
-                    title: 'TMDB — Mon suivi de films/séries',
-                    pitch: "Une application personnelle de suivi de films et séries, avec profils locaux et intégration d’API externe.",
-                    stack: ['Node.js full-stack', 'API TMDB'],
-                    result: null,
-                    role: null,
-                    status: 'Utilisée personnellement, activement maintenue',
-                    image: 'projects/tmdb-suivi.png',
-                    link: null
-                },
-                {
                     icon: '🚪',
                     title: 'escape-room',
                     pitch: "Un jeu d’évasion en vue FPS avec IA ennemie et une chaîne d’objectifs scriptée.",
@@ -95,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     role: null,
                     status: 'En ligne',
                     image: 'projects/flashcard-memory.png',
+                    portrait: true,
                     link: null
                 },
                 {
@@ -106,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     role: null,
                     status: 'Publication sur le Play Store dans quelques jours',
                     image: 'projects/vault-watch.png',
+                    portrait: true,
                     gallery: ['projects/vault-watch-1.png', 'projects/vault-watch-2.png', 'projects/vault-watch-3.png'],
                     link: null
                 },
@@ -191,8 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.setProperty('--card-glow', glow);
 
         // Vraie capture d'écran si disponible, sinon icône emoji en fallback (comme demandé)
+        const mediaClass = 'project-card-media' + (item.portrait ? ' is-portrait' : '');
         const media = item.image
-            ? `<div class="project-card-media"><img src="assets/${item.image}" alt="${item.title}" loading="lazy"></div>`
+            ? `<div class="${mediaClass}"><img src="assets/${item.image}" alt="${item.title}" loading="lazy"></div>`
             : `<div class="project-card-media project-card-media-placeholder"><span class="project-card-icon">${item.icon}</span></div>`;
 
         card.innerHTML = `
