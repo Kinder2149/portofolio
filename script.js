@@ -108,6 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     result: null,
                     role: null,
                     status: 'En phase de test',
+                    image: 'projects/vault-read.png',
+                    portrait: true,
                     link: null
                 }
             ]
