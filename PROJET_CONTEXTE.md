@@ -10,6 +10,17 @@
 
 ---
 
+## STATUT — fait foi pour les statuts (lu par Pilotage)
+
+```
+STATUT DU PROJET : En production
+MISSION : Remise à jour pour la mise en production (2026-09-07) — Close
+IDÉES PARQUÉES :
+  - Archiver PROFIL_DEVELOPPEUR_KEAMDER.md (doublon du profil global)
+  - Capture d'écran de Vault Read manquante
+```
+*(Bloc ajouté le 2026-10-30, validé par Kinder.)*
+
 ## 1. IDENTITÉ
 
 | Champ | Valeur |
