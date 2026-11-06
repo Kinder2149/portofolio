@@ -14,9 +14,10 @@
 ```
 STATUT DU PROJET : En production
 MISSION : Remise à jour pour la mise en production (2026-09-07) — Close
+MISSION : Capture de Vault Read et rangement du doublon (test de la méthode v2, 2026-11-06) — Plan prêt (plan et 4 critères validés par Kinder le 2026-11-06)
+  Étape : 1 — Archiver le doublon du profil — Planifiée — critère : le fichier PROFIL_DEVELOPPEUR_KEAMDER.md n'est plus à la racine du portfolio, il est dans _archives/ avec son contenu intact, et les sections 3 et 7 de ce PROJET_CONTEXTE ne le donnent plus comme présent à la racine
 IDÉES PARQUÉES :
-  - Archiver PROFIL_DEVELOPPEUR_KEAMDER.md (doublon du profil global)
-  - Capture d'écran de Vault Read manquante
+  (aucune — les deux idées parquées sont devenues la mission ci-dessus)
 ```
 *(Bloc ajouté le 2026-10-30, validé par Kinder.)*
 
@@ -90,7 +91,8 @@ portofolio/
 
 | Date | Décision | Raison |
 |---|---|---|
-| | (aucune décision figée documentée) | |
+| 2026-11-06 | **Critère de fin de la mission « Capture de Vault Read et rangement du doublon »** (écrit et validé par Kinder) : « Sur la page du portfolio ouverte dans un navigateur, la carte Vault Read affiche une vraie capture de l'application (écran bibliothèque, données de démonstration) à la place de l'icône. Le doublon PROFIL_DEVELOPPEUR_KEAMDER.md n'est plus à la racine du portfolio. » | Mission réelle de test de la méthode v2, issue des deux idées parquées du projet |
+| 2026-11-06 | La capture utilise des données de démonstration, jamais les vraies lectures de Kinder. Aucune mise en production ; la mission s'arrête à l'envoi de la branche de travail. | Le portfolio est public ; la fusion et la mise en ligne restent à la décision de Kinder |
 
 ---
 
@@ -99,7 +101,7 @@ portofolio/
 | Fichier | Statut | Note |
 |---|---|---|
 | PROJET_CONTEXTE.md | ✅ créé le 2026-08-06 (absent avant) | |
-| CHANGELOG.md | ❌ absent — l'historique vit dans les messages de commit git ("Final version 1.x") | |
+| CHANGELOG.md | ✅ créé le 2026-11-06 pour la mission de test de la méthode v2 (le gardien d'étape en a besoin) | |
 | PROFIL_DEVELOPPEUR_KEAMDER.md | Présent — généré automatiquement à partir de ce projet, doublon conceptuel avec le profil Kinder global tenu par Claude Code | |
 
 ---
@@ -117,4 +119,20 @@ portofolio/
 1. ~~Confirmer avec Kinder si ce portfolio est toujours d'actualité~~ — **Résolu 2026-09-07** : toujours d'actualité, remis à jour pour envoi en production.
 2. `PROFIL_DEVELOPPEUR_KEAMDER.md` fait doublon avec le profil Kinder global tenu par Claude Code (`~/.claude/projects/V--DEV/memory/user_kinder.md`) — à archiver ici, ce n'est pas un document de projet.
 3. Pas de `CHANGELOG.md` — dispensable vu la taille du projet, l'historique des commits git suffit.
-4. Vault Read n'a pas de vraie capture d'écran disponible dans son projet source (seulement des icônes) — carte publiée sans image (fallback icône), à mettre à jour si une capture devient disponible.
+4. Vault Read n'a pas de vraie capture d'écran disponible dans son projet source (seulement des icônes) — carte publiée sans image (fallback icône), à mettre à jour si une capture devient disponible. → **Devenu la mission du 2026-11-06 ci-dessous.**
+
+### Plan de la mission « Capture de Vault Read et rangement du doublon » (2026-11-06) — validé par Kinder le 2026-11-06
+
+Critère de fin de mission : voir section 6, décision du 2026-11-06.
+
+1. **Étape 1 — Archiver le doublon du profil**
+   *Critère :* le fichier PROFIL_DEVELOPPEUR_KEAMDER.md n'est plus à la racine du portfolio ; il est dans `_archives/`, contenu intact, et la section 3 (architecture) et la section 7 (documentation) de ce PROJET_CONTEXTE ne le donnent plus comme présent à la racine.
+
+2. **Étape 2 — Capture de l'écran bibliothèque de Vault Read**
+   *Critère :* le fichier `assets/projects/vault-read.png` est une vraie capture de l'écran bibliothèque de Vault Read, avec des livres de démonstration (aucune donnée personnelle de Kinder), lisible et au même format que les autres images du dossier `assets/projects/`.
+
+3. **Étape 3 — La carte Vault Read du portfolio affiche la capture**
+   *Critère :* page `index.html` ouverte dans un navigateur : la carte Vault Read montre la capture à la place de l'icône, sans image cassée et sans autre carte modifiée.
+
+4. **Étape 4 — Clôture** *(dernière étape du plan)*
+   *Critère :* vérification finale par une autre IA, sur Sonnet, dans une conversation neuve : le critère de fin de mission est constaté à l'écran ; PROJET_CONTEXTE et CHANGELOG sont à jour ; la branche de travail est envoyée en ligne, sans fusion dans la branche principale.
