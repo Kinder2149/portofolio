@@ -119,7 +119,7 @@ portofolio/
 ## 9. BACKLOG
 
 1. ~~Confirmer avec Kinder si ce portfolio est toujours d'actualité~~ — **Résolu 2026-09-07** : toujours d'actualité, remis à jour pour envoi en production.
-2. `PROFIL_DEVELOPPEUR_KEAMDER.md` fait doublon avec le profil Kinder global tenu par Claude Code (`~/.claude/projects/V--DEV/memory/user_kinder.md`) — à archiver ici, ce n'est pas un document de projet.
+2. ~~`PROFIL_DEVELOPPEUR_KEAMDER.md` fait doublon avec le profil Kinder global tenu par Claude Code (`~/.claude/projects/V--DEV/memory/user_kinder.md`) — à archiver ici~~ — **Fait 2026-11-06** : archivé dans `_archives/` (commit 7dc0ab2).
 3. Pas de `CHANGELOG.md` — dispensable vu la taille du projet, l'historique des commits git suffit.
 4. ~~Vault Read n'a pas de vraie capture d'écran~~ — **Périmé, constaté le 2026-11-06** : `assets/projects/vault-read.png` est une vraie capture de l'écran Bibliothèque (ajoutée le 2026-09-08, commit 12a447b) et la carte l'utilise déjà (`script.js`). Une capture plus fidèle (1080×1920, plus de données) reste une amélioration possible, non retenue ici.
 
