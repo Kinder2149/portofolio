@@ -4,7 +4,6 @@
 > Toute décision qui contredit ce fichier est interdite.
 > Si une demande sort de ce cadre : poser UNE question avant d'agir.
 
-**Version** : 1.1
 **Famille** : Perso
 **Dernière mise à jour** : 2026-09-07
 
@@ -20,6 +19,8 @@ IDÉES PARQUÉES :
   - Capture d'écran de Vault Read manquante
 ```
 *(Bloc ajouté le 2026-10-30, validé par Kinder.)*
+
+---
 
 ## 1. IDENTITÉ
 
