@@ -8,3 +8,4 @@
 ## 2026-11-06 — Étape 1 de la mission : doublon du profil archivé
 
 - PROFIL_DEVELOPPEUR_KEAMDER.md déplacé de la racine vers _archives/, contenu inchangé. Sections 3 et 7 du PROJET_CONTEXTE mises à jour.
+- Étapes 2 et 3 (capture de Vault Read, carte du portfolio) : closes par constat sur décision de Kinder le 2026-11-06 — la capture `assets/projects/vault-read.png` existait déjà (commit 12a447b, 2026-09-08) et la carte l'affiche déjà. Aucun changement de code. Backlog corrigé.

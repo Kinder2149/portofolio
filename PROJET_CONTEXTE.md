@@ -14,8 +14,9 @@
 ```
 STATUT DU PROJET : En production
 MISSION : Remise à jour pour la mise en production (2026-09-07) — Close
-MISSION : Capture de Vault Read et rangement du doublon (test de la méthode v2, 2026-11-06) — Plan prêt (plan et 4 critères validés par Kinder le 2026-11-06)
-  Étape : 1 — Archiver le doublon du profil — Planifiée — critère : le fichier PROFIL_DEVELOPPEUR_KEAMDER.md n'est plus à la racine du portfolio, il est dans _archives/ avec son contenu intact, et les sections 3 et 7 de ce PROJET_CONTEXTE ne le donnent plus comme présent à la racine
+MISSION : Capture de Vault Read et rangement du doublon (test de la méthode v2, 2026-11-06) — En cours
+  Étape : 4 — Clôture — Planifiée — critère : vérification finale par une autre IA (Sonnet, conversation neuve) : critère de fin de mission constaté à l'écran ; PROJET_CONTEXTE et CHANGELOG à jour ; branche de travail envoyée en ligne sans fusion dans la branche principale
+  Étapes closes : 1 (doublon archivé, commit 7dc0ab2) ; 2 et 3 (constat : la capture existait déjà, décision de Kinder le 2026-11-06)
 IDÉES PARQUÉES :
   (aucune — les deux idées parquées sont devenues la mission ci-dessus)
 ```
@@ -120,19 +121,19 @@ portofolio/
 1. ~~Confirmer avec Kinder si ce portfolio est toujours d'actualité~~ — **Résolu 2026-09-07** : toujours d'actualité, remis à jour pour envoi en production.
 2. `PROFIL_DEVELOPPEUR_KEAMDER.md` fait doublon avec le profil Kinder global tenu par Claude Code (`~/.claude/projects/V--DEV/memory/user_kinder.md`) — à archiver ici, ce n'est pas un document de projet.
 3. Pas de `CHANGELOG.md` — dispensable vu la taille du projet, l'historique des commits git suffit.
-4. Vault Read n'a pas de vraie capture d'écran disponible dans son projet source (seulement des icônes) — carte publiée sans image (fallback icône), à mettre à jour si une capture devient disponible. → **Devenu la mission du 2026-11-06 ci-dessous.**
+4. ~~Vault Read n'a pas de vraie capture d'écran~~ — **Périmé, constaté le 2026-11-06** : `assets/projects/vault-read.png` est une vraie capture de l'écran Bibliothèque (ajoutée le 2026-09-08, commit 12a447b) et la carte l'utilise déjà (`script.js`). Une capture plus fidèle (1080×1920, plus de données) reste une amélioration possible, non retenue ici.
 
 ### Plan de la mission « Capture de Vault Read et rangement du doublon » (2026-11-06) — validé par Kinder le 2026-11-06
 
 Critère de fin de mission : voir section 6, décision du 2026-11-06.
 
-1. **Étape 1 — Archiver le doublon du profil**
+1. ✅ **Étape 1 — Archiver le doublon du profil** *(faite, commit 7dc0ab2)*
    *Critère :* le fichier PROFIL_DEVELOPPEUR_KEAMDER.md n'est plus à la racine du portfolio ; il est dans `_archives/`, contenu intact, et la section 3 (architecture) et la section 7 (documentation) de ce PROJET_CONTEXTE ne le donnent plus comme présent à la racine.
 
-2. **Étape 2 — Capture de l'écran bibliothèque de Vault Read**
+2. ✅ **(close par constat le 2026-11-06, décision de Kinder : la capture existait déjà)** **Étape 2 — Capture de l'écran bibliothèque de Vault Read**
    *Critère :* le fichier `assets/projects/vault-read.png` est une vraie capture de l'écran bibliothèque de Vault Read, avec des livres de démonstration (aucune donnée personnelle de Kinder), lisible et au même format que les autres images du dossier `assets/projects/`.
 
-3. **Étape 3 — La carte Vault Read du portfolio affiche la capture**
+3. ✅ **(close par constat le 2026-11-06, la carte affichait déjà la capture ; aucun changement de code)** **Étape 3 — La carte Vault Read du portfolio affiche la capture**
    *Critère :* page `index.html` ouverte dans un navigateur : la carte Vault Read montre la capture à la place de l'icône, sans image cassée et sans autre carte modifiée.
 
 4. **Étape 4 — Clôture** *(dernière étape du plan)*
