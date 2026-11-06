@@ -57,7 +57,8 @@ portofolio/
 ├── style.css
 ├── script.js
 ├── assets/
-└── PROFIL_DEVELOPPEUR_KEAMDER.md   ← profil généré automatiquement, pas un document de projet
+└── _archives/
+    └── PROFIL_DEVELOPPEUR_KEAMDER.md   ← archivé : profil généré automatiquement, pas un document de projet
 ```
 
 **Services actifs :** 1 (site unique statique) / 20 maximum
@@ -102,7 +103,7 @@ portofolio/
 |---|---|---|
 | PROJET_CONTEXTE.md | ✅ créé le 2026-08-06 (absent avant) | |
 | CHANGELOG.md | ✅ créé le 2026-11-06 pour la mission de test de la méthode v2 (le gardien d'étape en a besoin) | |
-| PROFIL_DEVELOPPEUR_KEAMDER.md | Présent — généré automatiquement à partir de ce projet, doublon conceptuel avec le profil Kinder global tenu par Claude Code | |
+| PROFIL_DEVELOPPEUR_KEAMDER.md | Archivé dans `_archives/` (n'est plus à la racine) — généré automatiquement à partir de ce projet, doublon conceptuel avec le profil Kinder global tenu par Claude Code | |
 
 ---
 
