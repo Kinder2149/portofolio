@@ -14,11 +14,8 @@
 ```
 STATUT DU PROJET : En production
 MISSION : Remise à jour pour la mise en production (2026-09-07) — Close
-MISSION : Capture de Vault Read et rangement du doublon (test de la méthode v2, 2026-11-06) — En implémentation
-  Étape : 4 — Clôture — Planifiée — critère : vérification finale par une autre IA (Sonnet, conversation neuve) : critère de fin de mission constaté à l'écran ; PROJET_CONTEXTE et CHANGELOG à jour ; branche de travail envoyée en ligne sans fusion dans la branche principale
-  Étapes closes : 1 (doublon archivé, commit 7dc0ab2) ; 2 et 3 (constat : la capture existait déjà, décision de Kinder le 2026-11-06)
 IDÉES PARQUÉES :
-  (aucune — les deux idées parquées sont devenues la mission ci-dessus)
+  (aucune)
 ```
 *(Bloc ajouté le 2026-10-30, validé par Kinder.)*
 

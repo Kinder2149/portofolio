@@ -1,5 +1,8 @@
 # CHANGELOG — Portfolio Keamder
 
+## 2026-11-16 — Mission « Capture de Vault Read » close par arrêt
+- Close par arrêt sur décision de Kinder le 2026-11-16 (mission de test de la méthode v2, arrêtée le 2026-11-06 ; site inchangé, rien à constater à l'écran). Étape 4 non menée. Branche `mission-capture-vault-read` fusionnée dans master, envoyée en ligne puis supprimée. Mission retirée du STATUT (R41).
+
 ## 2026-11-10 — Tri des projets (lot 4)
 - [STATUT] Mission « Capture de Vault Read… » : statut « En cours » (hors liste) remplacé par « En implémentation » (étapes 1 à 3 closes ; étape 4, clôture, encore à faire : vérification finale puis fusion de la branche `mission-capture-vault-read` avec l'accord de Kinder). Seule mission active. 3 .md. Branches non touchées.
 
